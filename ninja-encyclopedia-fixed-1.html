@@ -1,0 +1,2198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ninja Encyclopedia — The Ultimate Shinobi Knowledge Hub</title>
+<meta name="description" content="Ninja Encyclopedia is the ultimate shinobi knowledge hub. Explore Characters, Jutsu, Clans, Villages, Timeline and Power Rankings from the world of ninja lore.">
+<meta name="keywords" content="ninja encyclopedia, shinobi, jutsu, ninja clans, hidden villages, ninja timeline, power rankings, ninja characters">
+<meta property="og:title" content="Ninja Encyclopedia — The Ultimate Shinobi Knowledge Hub">
+<meta property="og:description" content="Explore Characters, Jutsu, Clans, Villages, Timeline and Power Rankings in one shinobi archive.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#05070a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  if (window.tailwind) {
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#05070a',
+            surface: '#0b0e14',
+            surface2: '#11151d',
+            chakblue: '#3ba7ff',
+            chakblue2: '#1e6fd9',
+            chakorange: '#ff8a3d',
+            chakorange2: '#ff5e1a',
+            mist: '#8a94a3',
+            bone: '#e8edf2',
+            teal: '#34d1c4'
+          },
+          fontFamily: {
+            display: ['Rajdhani', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            jp: ['"Noto Sans JP"', 'sans-serif']
+          }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #05070a;
+    background-image:
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(59,167,255,0.16), transparent 60%),
+      radial-gradient(ellipse 900px 500px at 100% 10%, rgba(255,94,26,0.12), transparent 60%),
+      radial-gradient(ellipse 1200px 800px at 50% 100%, rgba(59,167,255,0.08), transparent 60%);
+    color: #e8edf2;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 18px rgba(59,167,255,0.55), 0 0 40px rgba(255,94,26,0.18);
+  }
+
+  .brand-glow {
+    background: linear-gradient(90deg, #3ba7ff 0%, #e8edf2 45%, #ff8a3d 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    z-index: 40;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  #chakra-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+  .seal {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: min(78vw, 620px);
+    height: min(78vw, 620px);
+    border-radius: 50%;
+    border: 1px solid rgba(59,167,255,0.25);
+    box-shadow:
+      0 0 60px rgba(59,167,255,0.15),
+      inset 0 0 80px rgba(255,94,26,0.06);
+    animation: spin 60s linear infinite;
+  }
+  .seal::before, .seal::after {
+    content: "";
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    border: 1px dashed rgba(255,138,61,0.18);
+  }
+  .seal::after {
+    inset: 18%;
+    border: 1px solid rgba(59,167,255,0.18);
+    animation: spin 40s linear infinite reverse;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .kanji-tick {
+    position: absolute;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: rgba(232,237,242,0.18);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+  }
+
+  .card-glow {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+    border: 1px solid rgba(232,237,242,0.08);
+    transition: border-color .35s ease, transform .35s ease, box-shadow .35s ease;
+  }
+  .card-glow:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59,167,255,0.4);
+    box-shadow: 0 0 0 1px rgba(59,167,255,0.15), 0 20px 50px -20px rgba(255,94,26,0.35);
+  }
+
+  .char-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
+    border: 1px solid rgba(232,237,242,0.08);
+    transition: border-color .35s ease, transform .35s ease, box-shadow .35s ease;
+  }
+  .char-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(59,167,255,0.45);
+    box-shadow: 0 0 0 1px rgba(59,167,255,0.15), 0 24px 55px -22px rgba(255,94,26,0.4);
+  }
+  .char-card .avatar-wrap { overflow: hidden; }
+  .char-card:hover img { transform: scale(1.08); }
+  .char-card img { transition: transform .5s ease; }
+
+  .rank-badge { font-family: 'Rajdhani', sans-serif; letter-spacing: 0.08em; }
+  .rank-S { color: #ff8a3d; border-color: rgba(255,138,61,0.5); }
+  .rank-A { color: #3ba7ff; border-color: rgba(59,167,255,0.5); }
+  .rank-B { color: #9ad1ff; border-color: rgba(154,209,255,0.35); }
+  .rank-C { color: #b7c0cc; border-color: rgba(183,192,204,0.3); }
+
+  .type-badge {
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 0.06em;
+    background: rgba(232,237,242,0.06);
+    border: 1px solid rgba(232,237,242,0.14);
+  }
+
+  .jutsu-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
+    border: 1px solid rgba(232,237,242,0.08);
+    transition: border-color .35s ease, transform .35s ease, box-shadow .35s ease;
+  }
+  .jutsu-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,138,61,0.45);
+    box-shadow: 0 0 0 1px rgba(255,138,61,0.15), 0 24px 55px -22px rgba(59,167,255,0.4);
+  }
+  .jutsu-card .icon-wrap { overflow: hidden; }
+  .jutsu-card:hover .icon-wrap img { transform: scale(1.1) rotate(1deg); }
+  .jutsu-card .icon-wrap img { transition: transform .5s ease; }
+
+  .clan-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
+    border: 1px solid rgba(232,237,242,0.08);
+    transition: border-color .35s ease, transform .35s ease, box-shadow .35s ease;
+  }
+  .clan-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(59,167,255,0.4);
+    box-shadow: 0 0 0 1px rgba(59,167,255,0.15), 0 24px 55px -22px rgba(255,94,26,0.35);
+  }
+  .clan-card .logo-ring {
+    border: 1px solid rgba(232,237,242,0.14);
+    transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+  }
+  .clan-card:hover .logo-ring {
+    border-color: rgba(255,138,61,0.5);
+    box-shadow: 0 0 20px rgba(255,138,61,0.25);
+    transform: rotate(6deg);
+  }
+
+  .village-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
+    border: 1px solid rgba(232,237,242,0.08);
+    transition: border-color .35s ease, transform .35s ease, box-shadow .35s ease;
+  }
+  .village-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(59,167,255,0.45);
+    box-shadow: 0 0 0 1px rgba(59,167,255,0.15), 0 24px 55px -22px rgba(255,94,26,0.4);
+  }
+  .village-card .banner-wrap { overflow: hidden; position: relative; }
+  .village-card:hover .banner-wrap img { transform: scale(1.08); }
+  .village-card .banner-wrap img { transition: transform .6s ease; }
+  .village-card .banner-fade {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(5,7,10,0.95) 100%);
+  }
+  .kage-badge {
+    background: rgba(255,138,61,0.1);
+    border: 1px solid rgba(255,138,61,0.35);
+  }
+
+  /* ---- Timeline ---- */
+  .timeline-rail { position: relative; }
+  .timeline-line-track {
+    position: absolute; top: 0; bottom: 0; left: 22px; width: 2px;
+    background: linear-gradient(180deg, rgba(232,237,242,0.14), rgba(232,237,242,0.04));
+  }
+  .timeline-line-fill {
+    position: absolute; top: 0; left: 22px; width: 2px; height: 0%;
+    background: linear-gradient(180deg, #3ba7ff, #ff8a3d);
+    box-shadow: 0 0 12px rgba(59,167,255,0.7);
+    transition: height .15s linear;
+  }
+  @media (min-width: 768px) {
+    .timeline-line-track, .timeline-line-fill { left: 50%; transform: translateX(-50%); }
+  }
+
+  .timeline-dot {
+    position: absolute; left: 22px; top: 8px; width: 14px; height: 14px; border-radius: 9999px;
+    transform: translateX(-50%);
+    background: var(--dot, #3ba7ff);
+    box-shadow: 0 0 0 4px rgba(5,7,10,1), 0 0 16px var(--dot, #3ba7ff);
+    z-index: 2;
+  }
+  .timeline-dot::after {
+    content: ""; position: absolute; inset: -6px; border-radius: 9999px; border: 1px solid var(--dot, #3ba7ff);
+    opacity: 0.5; animation: pulse-ring 2.4s ease-out infinite;
+  }
+  @media (min-width: 768px) { .timeline-dot { left: 50%; } }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.6); opacity: 0.6; }
+    100% { transform: scale(1.9); opacity: 0; }
+  }
+
+  .timeline-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+    border: 1px solid rgba(232,237,242,0.08);
+    transition: border-color .35s ease, transform .35s ease, box-shadow .35s ease;
+  }
+  .timeline-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(59,167,255,0.4);
+    box-shadow: 0 0 0 1px rgba(59,167,255,0.12), 0 20px 45px -22px rgba(255,94,26,0.35);
+  }
+
+  .thumb-wrap { position: relative; overflow: hidden; }
+  .thumb-glyph {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 3.4rem;
+    text-shadow: 0 0 26px currentColor;
+  }
+  .thumb-wrap::after {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08), transparent 55%);
+  }
+
+  .era-chip { border: 1px solid rgba(232,237,242,0.16); background: rgba(232,237,242,0.05); }
+
+  .era-pill {
+    border: 1px solid rgba(232,237,242,0.14);
+    transition: border-color .25s ease, background .25s ease, color .25s ease, transform .2s ease;
+  }
+  .era-pill:hover { transform: translateY(-1px); }
+  .era-pill.active {
+    color: #05070a;
+    background: var(--pill, #3ba7ff);
+    border-color: var(--pill, #3ba7ff);
+    box-shadow: 0 0 18px var(--pill, #3ba7ff);
+  }
+
+  .detail-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
+  .detail-wrap.open { grid-template-rows: 1fr; }
+  .detail-inner { overflow: hidden; }
+
+  .expand-btn svg { transition: transform .35s ease; }
+  .expand-btn.open svg { transform: rotate(180deg); }
+
+  select, input[type="text"] { background-color: rgba(11,14,20,0.7); }
+  select:focus, input:focus { border-color: #3ba7ff; outline: none; }
+
+  .btn-primary {
+    background: linear-gradient(90deg, #1e6fd9, #3ba7ff);
+    box-shadow: 0 0 25px rgba(59,167,255,0.45);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(59,167,255,0.7); }
+
+  .btn-ghost {
+    border: 1px solid rgba(255,138,61,0.45);
+    transition: background .25s ease, box-shadow .25s ease, transform .25s ease;
+  }
+  .btn-ghost:hover {
+    background: rgba(255,138,61,0.08);
+    box-shadow: 0 0 25px rgba(255,138,61,0.35);
+    transform: translateY(-2px);
+  }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: "";
+    position: absolute; left: 0; bottom: -4px;
+    width: 0; height: 1px;
+    background: linear-gradient(90deg, #3ba7ff, #ff8a3d);
+    transition: width .25s ease;
+  }
+  .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+  .nav-link.active { color: #e8edf2; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ---- Character profile: hero portrait ---- */
+  .portrait-frame {
+    position: relative;
+    border-radius: 1.75rem;
+    padding: 3px;
+    background: conic-gradient(from 0deg, var(--rank, #3ba7ff), transparent 30%, transparent 70%, var(--rank, #3ba7ff));
+    animation: spin-frame 10s linear infinite;
+  }
+  @keyframes spin-frame { to { transform: rotate(360deg); } }
+  .portrait-inner {
+    border-radius: 1.6rem; overflow: hidden; background: #0b0e14;
+    animation: spin-frame-rev 10s linear infinite;
+  }
+  @keyframes spin-frame-rev { to { transform: rotate(-360deg); } }
+
+  .info-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+    border: 1px solid rgba(232,237,242,0.08);
+    transition: border-color .3s ease, transform .3s ease;
+  }
+  .info-card:hover { transform: translateY(-3px); border-color: rgba(59,167,255,0.35); }
+
+  /* ---- Family tree ---- */
+  .tree-gen { position: relative; padding-left: 1.75rem; border-left: 1px dashed rgba(255,138,61,0.3); }
+  .tree-gen:last-child { border-left-color: rgba(59,167,255,0.3); }
+  .tree-node {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+    border: 1px solid rgba(232,237,242,0.1);
+    transition: border-color .25s ease, transform .25s ease;
+  }
+  .tree-node:hover { transform: translateY(-2px); border-color: rgba(255,138,61,0.4); }
+  .tree-node.is-link { cursor: pointer; }
+
+  /* ---- Hand seal chip ---- */
+  .seal-chip {
+    background: rgba(59,167,255,0.08);
+    border: 1px solid rgba(59,167,255,0.3);
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 0.06em;
+  }
+  .seal-arrow { color: rgba(232,237,242,0.3); }
+
+  /* ---- Power stats ---- */
+  .stat-row .stat-track {
+    height: 8px; border-radius: 9999px; background: rgba(232,237,242,0.08); overflow: hidden;
+  }
+  .stat-row .stat-fill {
+    height: 100%; width: 0%; border-radius: 9999px;
+    background: linear-gradient(90deg, var(--stat-color-a, #3ba7ff), var(--stat-color-b, #ff8a3d));
+    box-shadow: 0 0 10px var(--stat-color-a, #3ba7ff);
+    transition: width 1.1s cubic-bezier(.16,.84,.44,1);
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #0b0e14; }
+  ::-webkit-scrollbar-thumb { background: #1e6fd9; border-radius: 9999px; }
+
+  :focus-visible { outline: 2px solid #3ba7ff; outline-offset: 2px; }
+
+  .hidden { display: none !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .seal, .seal::after { animation: none; }
+    html { scroll-behavior: auto; }
+    .reveal { transition: none; opacity: 1; transform: none; }
+    .char-card, .char-card img { transition: none; }
+    .timeline-dot::after { animation: none; }
+    .portrait-frame, .portrait-inner { animation: none; }
+    .stat-fill { transition: none; }
+    .animate-bounce { animation: none; }
+  }
+
+  /* Skip link: visually hidden until focused, lets keyboard/screen-reader
+     users bypass the repeated nav and jump straight to the main content. */
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3.5rem;
+    z-index: 100;
+    background: #3ba7ff;
+    color: #05070a;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    padding: 0.65rem 1.25rem;
+    border-radius: 9999px;
+    transition: top .2s ease;
+  }
+  .skip-link:focus {
+    top: 1rem;
+    outline: 3px solid #05070a;
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body class="font-body antialiased overflow-x-hidden grain">
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div id="cdnWarning" class="hidden fixed top-0 inset-x-0 z-[100] bg-chakorange2 text-white text-sm px-4 py-3 flex items-center justify-between gap-3" role="alert">
+  <span>⚠️ This page needs an internet connection to load its styling and images (Tailwind CDN + fonts + avatars). Please reconnect and reload.</span>
+  <button onclick="document.getElementById('cdnWarning').classList.add('hidden')" class="shrink-0 border border-white/40 rounded-full px-3 py-1 text-xs">Dismiss</button>
+</div>
+
+<canvas id="chakra-canvas" aria-hidden="true"></canvas>
+
+<!-- NAVBAR (shared by both views) -->
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-ink/70 border-b border-white/5">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between" aria-label="Primary">
+    <a href="#home" class="js-enc-link font-display text-xl tracking-wide font-700 brand-glow"><span aria-hidden="true" lang="ja">忍</span> NINJA ENCYCLOPEDIA</a>
+
+    <ul class="hidden lg:flex items-center gap-8 font-display text-[15px] tracking-wide text-bone/90">
+      <li><a href="#home" class="nav-link js-enc-link">Home</a></li>
+      <li><a href="#characters" class="nav-link js-enc-link">Characters</a></li>
+      <li><a href="#jutsu" class="nav-link js-enc-link">Jutsu</a></li>
+      <li><a href="#clans" class="nav-link js-enc-link">Clans</a></li>
+      <li><a href="#villages" class="nav-link js-enc-link">Villages</a></li>
+      <li><a href="#timeline" class="nav-link js-enc-link">Timeline</a></li>
+      <li><a href="#rankings" class="nav-link js-enc-link">Rankings</a></li>
+    </ul>
+
+    <div class="hidden lg:flex items-center gap-3">
+      <a href="#charSearch" class="js-enc-link p-2 rounded-full border border-white/10 hover:border-chakblue/60 transition-colors" aria-label="Search the encyclopedia">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </a>
+    </div>
+
+    <button id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden p-2 rounded border border-white/10">
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path id="menuBtnPath" d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </nav>
+
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-white/5 bg-ink/95 px-5 py-4">
+    <ul class="flex flex-col gap-4 font-display text-lg" aria-label="Mobile">
+      <li><a href="#home" class="mobile-link js-enc-link">Home</a></li>
+      <li><a href="#characters" class="mobile-link js-enc-link">Characters</a></li>
+      <li><a href="#jutsu" class="mobile-link js-enc-link">Jutsu</a></li>
+      <li><a href="#clans" class="mobile-link js-enc-link">Clans</a></li>
+      <li><a href="#villages" class="mobile-link js-enc-link">Villages</a></li>
+      <li><a href="#timeline" class="mobile-link js-enc-link">Timeline</a></li>
+      <li><a href="#rankings" class="mobile-link js-enc-link">Rankings</a></li>
+      <li><a href="#charSearch" class="mobile-link js-enc-link">Search</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ======================================================= -->
+<!-- VIEW 1: MAIN ENCYCLOPEDIA                                -->
+<!-- ======================================================= -->
+<div id="view-encyclopedia">
+
+<!-- HERO -->
+<section id="home" class="relative min-h-screen flex items-center justify-center px-5 pt-16">
+  <div class="seal" aria-hidden="true"></div>
+  <span aria-hidden="true" class="kanji-tick" style="top:14%; left:8%;">術</span>
+  <span aria-hidden="true" class="kanji-tick" style="top:70%; left:12%;">氏族</span>
+  <span aria-hidden="true" class="kanji-tick" style="top:22%; right:10%;">里</span>
+  <span aria-hidden="true" class="kanji-tick" style="top:75%; right:9%;">番付</span>
+
+  <div class="relative z-10 max-w-4xl mx-auto text-center">
+    <p class="font-jp text-chakorange tracking-[0.35em] text-xs sm:text-sm mb-5">忍者大全 — SHINOBI ARCHIVE</p>
+    <h1 class="font-display font-700 text-5xl sm:text-7xl lg:text-8xl tracking-wide brand-glow glow-text leading-[0.95]">
+      NINJA<br class="sm:hidden"> ENCYCLOPEDIA
+    </h1>
+    <p class="mt-6 font-display text-xl sm:text-2xl text-chakblue tracking-wide">The Ultimate Shinobi Knowledge Hub</p>
+    <p class="mt-6 text-mist text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+      Chart every bloodline and blade. Dive into Characters, Jutsu, Clans, Villages, the full Timeline,
+      and live Power Rankings — one archive built for shinobi scholars and rank-and-file fans alike.
+    </p>
+
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#characters" class="js-enc-link btn-primary font-display font-600 tracking-wide text-ink px-8 py-3.5 rounded-full text-base">
+        Explore Encyclopedia
+      </a>
+      <button id="randomShinobi" class="btn-ghost font-display font-600 tracking-wide text-bone px-8 py-3.5 rounded-full text-base">
+        🎲 Random Shinobi
+      </button>
+    </div>
+
+    <p id="randomResult" class="mt-6 font-jp text-chakorange text-sm min-h-[1.5em]" aria-live="polite" lang="ja"></p>
+  </div>
+
+  <a href="#characters" class="js-enc-link absolute bottom-8 left-1/2 -translate-x-1/2 text-mist/60 animate-bounce" aria-hidden="true" tabindex="-1">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m0 0-6-6m6 6 6-6"/></svg>
+  </a>
+</section>
+
+<main id="main-content" tabindex="-1">
+
+<!-- CHARACTERS SECTION -->
+<section id="characters" class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-24 scroll-mt-16">
+  <div class="reveal mb-12 text-center max-w-2xl mx-auto">
+    <p class="font-jp text-chakorange tracking-[0.3em] text-xs mb-3">忍者名鑑 — SHINOBI ROSTER</p>
+    <h2 class="font-display font-700 text-3xl sm:text-5xl">Characters</h2>
+    <p class="text-mist mt-3">Search the full roster or filter by village, clan, and rank to find the shinobi you're after.</p>
+  </div>
+
+  <!-- SEARCH + FILTERS -->
+  <div class="reveal rounded-2xl border border-white/8 bg-surface/60 p-5 sm:p-6">
+    <div class="flex flex-col sm:flex-row gap-3">
+      <div class="relative flex-1">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-mist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <label for="charSearch" class="sr-only">Search characters</label>
+        <input id="charSearch" type="text" placeholder="Search by name…"
+          class="w-full border border-white/10 rounded-full pl-11 pr-5 py-3 text-sm">
+      </div>
+
+      <select id="villageFilter" class="border border-white/10 rounded-full px-5 py-3 text-sm font-display tracking-wide">
+        <option value="">All Villages</option>
+      </select>
+      <select id="clanFilter" class="border border-white/10 rounded-full px-5 py-3 text-sm font-display tracking-wide">
+        <option value="">All Clans</option>
+      </select>
+      <select id="rankFilter" class="border border-white/10 rounded-full px-5 py-3 text-sm font-display tracking-wide">
+        <option value="">All Ranks</option>
+      </select>
+    </div>
+
+    <div class="flex items-center justify-between mt-4">
+      <p id="resultCount" class="text-mist text-xs" aria-live="polite"></p>
+      <button id="clearFilters" class="text-chakblue text-xs font-display tracking-wide hover:text-chakorange transition-colors">Clear filters</button>
+    </div>
+  </div>
+
+  <!-- CHARACTER GRID -->
+  <div id="charGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-10"></div>
+  <div id="emptyState" class="hidden text-center py-20">
+    <p class="font-jp text-chakorange text-sm mb-2">見つかりません</p>
+    <p class="font-display text-xl text-bone">No shinobi match your search.</p>
+    <p class="text-mist text-sm mt-2">Try a different name or clear your filters.</p>
+  </div>
+</section>
+
+<!-- JUTSU ENCYCLOPEDIA SECTION -->
+<section id="jutsu" class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-24 scroll-mt-16 border-t border-white/5">
+  <div class="reveal mb-12 text-center max-w-2xl mx-auto">
+    <p class="font-jp text-chakblue tracking-[0.3em] text-xs mb-3">術式書 — JUTSU ENCYCLOPEDIA</p>
+    <h2 class="font-display font-700 text-3xl sm:text-5xl">Jutsu</h2>
+    <p class="text-mist mt-3">Search every technique or filter by type, rank, and chakra nature to master the archive.</p>
+  </div>
+
+  <!-- SEARCH + FILTERS -->
+  <div class="reveal rounded-2xl border border-white/8 bg-surface/60 p-5 sm:p-6">
+    <div class="flex flex-col sm:flex-row gap-3">
+      <div class="relative flex-1">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-mist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <label for="jutsuSearch" class="sr-only">Search jutsu</label>
+        <input id="jutsuSearch" type="text" placeholder="Search by jutsu name…"
+          class="w-full border border-white/10 rounded-full pl-11 pr-5 py-3 text-sm">
+      </div>
+
+      <select id="typeFilter" class="border border-white/10 rounded-full px-5 py-3 text-sm font-display tracking-wide">
+        <option value="">All Types</option>
+      </select>
+      <select id="jutsuRankFilter" class="border border-white/10 rounded-full px-5 py-3 text-sm font-display tracking-wide">
+        <option value="">All Ranks</option>
+      </select>
+      <select id="natureFilter" class="border border-white/10 rounded-full px-5 py-3 text-sm font-display tracking-wide">
+        <option value="">All Natures</option>
+      </select>
+    </div>
+
+    <div class="flex items-center justify-between mt-4">
+      <p id="jutsuResultCount" class="text-mist text-xs" aria-live="polite"></p>
+      <button id="clearJutsuFilters" class="text-chakblue text-xs font-display tracking-wide hover:text-chakorange transition-colors">Clear filters</button>
+    </div>
+  </div>
+
+  <!-- JUTSU GRID -->
+  <div id="jutsuGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10"></div>
+  <div id="jutsuEmptyState" class="hidden text-center py-20">
+    <p class="font-jp text-chakorange text-sm mb-2">見つかりません</p>
+    <p class="font-display text-xl text-bone">No jutsu match your search.</p>
+    <p class="text-mist text-sm mt-2">Try a different name or clear your filters.</p>
+  </div>
+</section>
+
+<!-- CLANS SECTION -->
+<section id="clans" class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-24 scroll-mt-16 border-t border-white/5">
+  <div class="reveal mb-12 text-center max-w-2xl mx-auto">
+    <p class="font-jp text-chakorange tracking-[0.3em] text-xs mb-3">氏族名鑑 — CLAN REGISTRY</p>
+    <h2 class="font-display font-700 text-3xl sm:text-5xl">Clans</h2>
+    <p class="text-mist mt-3">Search every bloodline or filter by village to trace a clan's origin and kekkei genkai.</p>
+  </div>
+
+  <!-- SEARCH + FILTER -->
+  <div class="reveal rounded-2xl border border-white/8 bg-surface/60 p-5 sm:p-6">
+    <div class="flex flex-col sm:flex-row gap-3">
+      <div class="relative flex-1">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-mist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <label for="clanSearch" class="sr-only">Search clans</label>
+        <input id="clanSearch" type="text" placeholder="Search by clan name…"
+          class="w-full border border-white/10 rounded-full pl-11 pr-5 py-3 text-sm">
+      </div>
+
+      <select id="clanVillageFilter" class="border border-white/10 rounded-full px-5 py-3 text-sm font-display tracking-wide">
+        <option value="">All Villages</option>
+      </select>
+    </div>
+
+    <div class="flex items-center justify-between mt-4">
+      <p id="clanResultCount" class="text-mist text-xs" aria-live="polite"></p>
+      <button id="clearClanFilters" class="text-chakblue text-xs font-display tracking-wide hover:text-chakorange transition-colors">Clear filters</button>
+    </div>
+  </div>
+
+  <!-- CLAN GRID -->
+  <div id="clanGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10"></div>
+  <div id="clanEmptyState" class="hidden text-center py-20">
+    <p class="font-jp text-chakorange text-sm mb-2">見つかりません</p>
+    <p class="font-display text-xl text-bone">No clans match your search.</p>
+    <p class="text-mist text-sm mt-2">Try a different name or clear your filters.</p>
+  </div>
+</section>
+
+<!-- VILLAGES SECTION -->
+<section id="villages" class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-24 scroll-mt-16 border-t border-white/5">
+  <div class="reveal mb-12 text-center max-w-2xl mx-auto">
+    <p class="font-jp text-chakblue tracking-[0.3em] text-xs mb-3">里の記録 — VILLAGE REGISTRY</p>
+    <h2 class="font-display font-700 text-3xl sm:text-5xl">Villages</h2>
+    <p class="text-mist mt-3">Search every hidden village or filter by country to see who leads it and why.</p>
+  </div>
+
+  <!-- SEARCH + FILTER -->
+  <div class="reveal rounded-2xl border border-white/8 bg-surface/60 p-5 sm:p-6">
+    <div class="flex flex-col sm:flex-row gap-3">
+      <div class="relative flex-1">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-mist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <label for="villageSearch" class="sr-only">Search villages</label>
+        <input id="villageSearch" type="text" placeholder="Search by village name…"
+          class="w-full border border-white/10 rounded-full pl-11 pr-5 py-3 text-sm">
+      </div>
+
+      <select id="countryFilter" class="border border-white/10 rounded-full px-5 py-3 text-sm font-display tracking-wide">
+        <option value="">All Countries</option>
+      </select>
+    </div>
+
+    <div class="flex items-center justify-between mt-4">
+      <p id="villageResultCount" class="text-mist text-xs" aria-live="polite"></p>
+      <button id="clearVillageFilters" class="text-chakblue text-xs font-display tracking-wide hover:text-chakorange transition-colors">Clear filters</button>
+    </div>
+  </div>
+
+  <!-- VILLAGE GRID -->
+  <div id="villageGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10"></div>
+  <div id="villageEmptyState" class="hidden text-center py-20">
+    <p class="font-jp text-chakorange text-sm mb-2">見つかりません</p>
+    <p class="font-display text-xl text-bone">No villages match your search.</p>
+    <p class="text-mist text-sm mt-2">Try a different name or clear your filters.</p>
+  </div>
+</section>
+
+<!-- TIMELINE SECTION -->
+<section id="timeline" class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-24 scroll-mt-16 border-t border-white/5">
+  <div class="reveal mb-12 text-center max-w-2xl mx-auto">
+    <p class="font-jp text-chakorange tracking-[0.3em] text-xs mb-3">年表 — SHINOBI TIMELINE</p>
+    <h2 class="font-display font-700 text-3xl sm:text-5xl">History of the Shinobi World</h2>
+    <p class="text-mist mt-3">From wandering clans bound only by blood, to the five hidden villages and the uneasy peace between them — search events or filter by era to trace how the shinobi world took shape.</p>
+  </div>
+
+  <!-- SEARCH + ERA FILTER -->
+  <div class="max-w-3xl mx-auto sticky top-16 z-30">
+    <div class="reveal rounded-2xl border border-white/8 bg-ink/80 backdrop-blur-md p-5 sm:p-6 shadow-2xl shadow-black/40">
+      <div class="flex flex-col sm:flex-row gap-3">
+        <div class="relative flex-1">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-mist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <label for="timelineSearch" class="sr-only">Search timeline events</label>
+          <input id="timelineSearch" type="text" placeholder="Search by title, era, or keyword…"
+            class="w-full border border-white/10 rounded-full pl-11 pr-5 py-3 text-sm focus:outline-none focus:border-chakblue/60 transition-colors">
+        </div>
+        <button id="clearTimelineFilters" class="shrink-0 text-xs font-display tracking-wide border border-white/10 rounded-full px-5 py-3 hover:border-chakorange/60 hover:text-chakorange transition-colors">
+          Clear filters
+        </button>
+      </div>
+
+      <div id="eraPills" class="flex flex-wrap gap-2 mt-4"></div>
+
+      <p id="timelineResultCount" class="text-mist text-xs mt-4" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <!-- TIMELINE TRACK -->
+  <div class="max-w-5xl mx-auto mt-16">
+    <div id="timelineRail" class="timeline-rail relative">
+      <div class="timeline-line-track"></div>
+      <div id="timelineFill" class="timeline-line-fill"></div>
+      <div id="timelineTrack"></div>
+    </div>
+  </div>
+
+  <div id="timelineEmptyState" class="hidden text-center py-20">
+    <p class="font-jp text-chakorange text-sm mb-2">見つかりません</p>
+    <p class="font-display text-xl text-bone">No events match your search.</p>
+    <p class="text-mist text-sm mt-2">Try a different title or clear your filters.</p>
+  </div>
+
+  <!-- ERA LEGEND -->
+  <div class="reveal max-w-5xl mx-auto border-t border-white/5 mt-16 pt-8 flex flex-wrap items-center gap-x-6 gap-y-3 justify-center text-xs text-mist">
+    <span class="font-display tracking-wide text-bone/80">Eras:</span>
+    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full" style="background:#8a94a3"></span>Age of Clans</span>
+    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full" style="background:#3ba7ff"></span>Founding Era</span>
+    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full" style="background:#ff5e1a"></span>Warring Era</span>
+    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full" style="background:#34d1c4"></span>Unification Era</span>
+    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full" style="background:#ff8a3d"></span>Modern Era</span>
+  </div>
+</section>
+
+<!-- OTHER SCROLLS GRID -->
+<section class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pb-24">
+  <div class="reveal mb-14 text-center max-w-2xl mx-auto">
+    <p class="font-jp text-chakblue tracking-[0.3em] text-xs mb-3">巻物 — THE ARCHIVE</p>
+    <h2 class="font-display font-700 text-3xl sm:text-4xl">More Scrolls of Knowledge</h2>
+    <p class="text-mist mt-3">The next path through the shinobi world, coming soon to the archive.</p>
+  </div>
+
+  <div class="max-w-md mx-auto">
+
+    <article id="rankings" class="reveal card-glow rounded-2xl p-7 scroll-mt-24">
+      <span class="font-jp text-chakorange text-xs tracking-widest">番付</span>
+      <h3 class="font-display font-700 text-2xl mt-2">Power Rankings</h3>
+      <p class="text-mist text-sm mt-3 leading-relaxed">Community-ranked power tiers, updated by feats, fights, and jutsu mastery.</p>
+      <a href="#rankings" class="js-enc-link inline-block mt-5 text-chakblue text-sm font-display tracking-wide">See the tier list →</a>
+      <p class="text-mist text-xs mt-2">(Coming soon — this section is still being written.)</p>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+</div>
+<!-- end #view-encyclopedia -->
+
+<!-- ======================================================= -->
+<!-- VIEW 2: CHARACTER PROFILE                                -->
+<!-- ======================================================= -->
+<div id="view-character" class="hidden">
+<main class="relative z-10 pt-16">
+
+  <!-- BREADCRUMB + SWITCHER -->
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <a href="#characters" class="js-enc-link inline-flex items-center gap-2 text-mist text-sm hover:text-chakblue transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      Back to Characters
+    </a>
+    <div class="flex items-center gap-2">
+      <label for="charSwitcher" class="text-mist text-xs font-display tracking-wide whitespace-nowrap">Jump to shinobi</label>
+      <select id="charSwitcher" class="border border-white/10 rounded-full px-4 py-2 text-xs font-display tracking-wide"></select>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative px-5 sm:px-8 pt-8 pb-16 max-w-6xl mx-auto overflow-hidden">
+    <span aria-hidden="true" class="kanji-tick" style="top:2%; right:6%;">忍</span>
+    <div class="grid md:grid-cols-[280px_1fr] gap-10 items-start">
+      <div class="reveal in mx-auto md:mx-0">
+        <div class="portrait-frame w-56 h-56 sm:w-64 sm:h-64" id="portraitFrame" style="--rank:#3ba7ff">
+          <div class="portrait-inner w-full h-full">
+            <img id="portraitImg" src="" alt="" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal in">
+        <div class="flex items-center gap-3 flex-wrap">
+          <span id="rankBadge" class="rank-badge border text-sm px-3 py-1 rounded-full font-700"></span>
+          <span id="natureBadge" class="flex items-center gap-2 text-sm font-display tracking-wide"></span>
+        </div>
+        <h1 id="charName" class="font-display font-700 text-4xl sm:text-5xl mt-4 glow-text"></h1>
+        <p id="charSub" class="text-mist mt-2 text-sm"></p>
+        <p id="charBio" class="text-bone/85 mt-6 leading-relaxed max-w-2xl"></p>
+      </div>
+    </div>
+
+    <!-- QUICK FACTS -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12">
+      <div class="reveal in info-card rounded-2xl p-5">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-2">氏族 — CLAN</p>
+        <p id="factClan" class="font-display font-700 text-lg"></p>
+      </div>
+      <div class="reveal in info-card rounded-2xl p-5">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-2">里 — VILLAGE</p>
+        <p id="factVillage" class="font-display font-700 text-lg"></p>
+      </div>
+      <div class="reveal in info-card rounded-2xl p-5">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-2">階級 — RANK</p>
+        <p id="factRank" class="font-display font-700 text-lg"></p>
+      </div>
+      <div class="reveal in info-card rounded-2xl p-5">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-2">性質 — NATURE</p>
+        <p id="factNature" class="font-display font-700 text-lg"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POWER STATS -->
+  <section class="px-5 sm:px-8 max-w-6xl mx-auto pb-20">
+    <div class="reveal in mb-8">
+      <p class="font-jp text-chakblue tracking-[0.3em] text-xs mb-3">能力値 — POWER STATS</p>
+      <h2 class="font-display font-700 text-2xl sm:text-3xl">Combat Profile</h2>
+    </div>
+    <div id="statList" class="reveal in grid sm:grid-cols-2 gap-x-12 gap-y-6 rounded-2xl border border-white/8 bg-surface/40 p-6 sm:p-8"></div>
+  </section>
+
+  <!-- JUTSU LIST -->
+  <section class="px-5 sm:px-8 max-w-6xl mx-auto pb-20">
+    <div class="reveal in mb-8">
+      <p class="font-jp text-chakorange tracking-[0.3em] text-xs mb-3">術 — KNOWN JUTSU</p>
+      <h2 class="font-display font-700 text-2xl sm:text-3xl">Signature Techniques</h2>
+    </div>
+    <div id="profileJutsuGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- RELATED CHARACTERS -->
+  <section class="px-5 sm:px-8 max-w-6xl mx-auto pb-24">
+    <div class="reveal in mb-8">
+      <p class="font-jp text-chakblue tracking-[0.3em] text-xs mb-3">関係者 — CONNECTIONS</p>
+      <h2 class="font-display font-700 text-2xl sm:text-3xl">Related Characters</h2>
+      <p class="text-mist mt-2 text-sm">Shinobi sharing a clan, village, or rank in the archive.</p>
+    </div>
+    <div id="relatedGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+</main>
+</div>
+<!-- end #view-character -->
+
+<!-- ======================================================= -->
+<!-- VIEW 3: JUTSU DETAIL                                     -->
+<!-- ======================================================= -->
+<div id="view-jutsu" class="hidden">
+<main class="relative z-10 pt-16">
+
+  <!-- BREADCRUMB + SWITCHER -->
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <a href="#jutsu" class="js-enc-link inline-flex items-center gap-2 text-mist text-sm hover:text-chakblue transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      Back to Jutsu
+    </a>
+    <div class="flex items-center gap-2">
+      <label for="jutsuSwitcher" class="text-mist text-xs font-display tracking-wide whitespace-nowrap">Jump to jutsu</label>
+      <select id="jutsuSwitcher" class="border border-white/10 rounded-full px-4 py-2 text-xs font-display tracking-wide"></select>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative px-5 sm:px-8 pt-8 pb-16 max-w-6xl mx-auto overflow-hidden">
+    <span aria-hidden="true" class="kanji-tick" style="top:2%; right:6%;">術</span>
+    <div class="grid md:grid-cols-[280px_1fr] gap-10 items-start">
+      <div class="reveal in mx-auto md:mx-0">
+        <div class="portrait-frame w-56 h-56 sm:w-64 sm:h-64" id="jutsuPortraitFrame" style="--rank:#3ba7ff">
+          <div class="portrait-inner w-full h-full">
+            <img id="jutsuPortraitImg" src="" alt="" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal in">
+        <div class="flex items-center gap-3 flex-wrap">
+          <span id="jutsuRankBadge" class="rank-badge border text-sm px-3 py-1 rounded-full font-700"></span>
+          <span id="jutsuTypeBadge" class="type-badge text-sm px-3 py-1 rounded-full text-bone/80"></span>
+          <span id="jutsuNatureBadge" class="flex items-center gap-2 text-sm font-display tracking-wide"></span>
+        </div>
+        <h1 id="jutsuName" class="font-display font-700 text-4xl sm:text-5xl mt-4 glow-text"></h1>
+        <p id="jutsuDesc" class="text-bone/85 mt-6 leading-relaxed max-w-2xl"></p>
+      </div>
+    </div>
+
+    <!-- QUICK FACTS -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12">
+      <div class="reveal in info-card rounded-2xl p-5">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-2">分類 — TYPE</p>
+        <p id="factType" class="font-display font-700 text-lg"></p>
+      </div>
+      <div class="reveal in info-card rounded-2xl p-5">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-2">階級 — RANK</p>
+        <p id="factJutsuRank" class="font-display font-700 text-lg"></p>
+      </div>
+      <div class="reveal in info-card rounded-2xl p-5">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-2">性質 — NATURE</p>
+        <p id="factJutsuNature" class="font-display font-700 text-lg"></p>
+      </div>
+      <div class="reveal in info-card rounded-2xl p-5">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-2">使用者数 — USERS</p>
+        <p id="factUserCount" class="font-display font-700 text-lg"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HAND SEALS -->
+  <section class="px-5 sm:px-8 max-w-6xl mx-auto pb-20">
+    <div class="reveal in mb-8">
+      <p class="font-jp text-chakblue tracking-[0.3em] text-xs mb-3">印 — HAND SEAL SEQUENCE</p>
+      <h2 class="font-display font-700 text-2xl sm:text-3xl">Required Hand Seals</h2>
+    </div>
+    <div id="handSealRow" class="reveal in flex flex-wrap items-center gap-3 rounded-2xl border border-white/8 bg-surface/40 p-6 sm:p-8"></div>
+  </section>
+
+  <!-- USERS -->
+  <section class="px-5 sm:px-8 max-w-6xl mx-auto pb-20">
+    <div class="reveal in mb-8">
+      <p class="font-jp text-chakorange tracking-[0.3em] text-xs mb-3">使用者 — KNOWN USERS</p>
+      <h2 class="font-display font-700 text-2xl sm:text-3xl">Shinobi Who Know This Jutsu</h2>
+    </div>
+    <div id="jutsuUsersGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <p id="jutsuUsersEmpty" class="hidden text-mist text-sm">No recorded users in the archive yet.</p>
+  </section>
+
+  <!-- RELATED JUTSU -->
+  <section class="px-5 sm:px-8 max-w-6xl mx-auto pb-24">
+    <div class="reveal in mb-8">
+      <p class="font-jp text-chakblue tracking-[0.3em] text-xs mb-3">関連術 — CONNECTIONS</p>
+      <h2 class="font-display font-700 text-2xl sm:text-3xl">Related Jutsu</h2>
+      <p class="text-mist mt-2 text-sm">Techniques that share a type, chakra nature, or common lineage.</p>
+    </div>
+    <div id="relatedJutsuGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+</main>
+</div>
+<!-- end #view-jutsu -->
+
+<!-- ======================================================= -->
+<!-- VIEW 4: CLAN DETAIL                                      -->
+<!-- ======================================================= -->
+<div id="view-clan" class="hidden">
+<main class="relative z-10 pt-16">
+
+  <!-- BREADCRUMB + SWITCHER -->
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <a href="#clans" class="js-enc-link inline-flex items-center gap-2 text-mist text-sm hover:text-chakblue transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      Back to Clans
+    </a>
+    <div class="flex items-center gap-2">
+      <label for="clanSwitcher" class="text-mist text-xs font-display tracking-wide whitespace-nowrap">Jump to clan</label>
+      <select id="clanSwitcher" class="border border-white/10 rounded-full px-4 py-2 text-xs font-display tracking-wide"></select>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative px-5 sm:px-8 pt-8 pb-16 max-w-6xl mx-auto overflow-hidden">
+    <span aria-hidden="true" class="kanji-tick" style="top:2%; right:6%;">氏族</span>
+    <div class="grid md:grid-cols-[280px_1fr] gap-10 items-start">
+      <div class="reveal in mx-auto md:mx-0">
+        <div class="portrait-frame w-56 h-56 sm:w-64 sm:h-64" id="clanPortraitFrame" style="--rank:#ff8a3d">
+          <div class="portrait-inner w-full h-full">
+            <img id="clanPortraitImg" src="" alt="" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal in">
+        <span id="clanVillageBadge" class="kage-badge inline-block text-xs px-3 py-1 rounded-full text-chakorange"></span>
+        <h1 id="clanName" class="font-display font-700 text-4xl sm:text-5xl mt-4 glow-text"></h1>
+        <p id="clanSub" class="text-mist mt-2 text-sm"></p>
+      </div>
+    </div>
+
+    <!-- QUICK FACTS -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-12">
+      <div class="reveal in info-card rounded-2xl p-5">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-2">里 — VILLAGE</p>
+        <p id="factClanVillage" class="font-display font-700 text-lg"></p>
+      </div>
+      <div class="reveal in info-card rounded-2xl p-5">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-2">構成員 — MEMBERS</p>
+        <p id="factMemberCount" class="font-display font-700 text-lg"></p>
+      </div>
+      <div class="reveal in info-card rounded-2xl p-5 col-span-2 sm:col-span-1">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-2">血継限界 — KEKKEI GENKAI</p>
+        <p id="factKekkei" class="font-display font-700 text-base leading-snug"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLAN HISTORY -->
+  <section class="px-5 sm:px-8 max-w-6xl mx-auto pb-20">
+    <div class="reveal in mb-8">
+      <p class="font-jp text-chakblue tracking-[0.3em] text-xs mb-3">歴史 — CLAN HISTORY</p>
+      <h2 class="font-display font-700 text-2xl sm:text-3xl">Origins &amp; History</h2>
+    </div>
+    <p id="clanHistory" class="reveal in text-bone/85 leading-relaxed rounded-2xl border border-white/8 bg-surface/40 p-6 sm:p-8"></p>
+  </section>
+
+  <!-- KEKKEI GENKAI -->
+  <section class="px-5 sm:px-8 max-w-6xl mx-auto pb-20">
+    <div class="reveal in mb-8">
+      <p class="font-jp text-chakorange tracking-[0.3em] text-xs mb-3">血継限界 — BLOODLINE LIMIT</p>
+      <h2 class="font-display font-700 text-2xl sm:text-3xl">Kekkei Genkai</h2>
+    </div>
+    <p id="clanKekkeiFull" class="reveal in text-bone/85 leading-relaxed rounded-2xl border border-white/8 bg-surface/40 p-6 sm:p-8"></p>
+  </section>
+
+  <!-- MEMBERS -->
+  <section class="px-5 sm:px-8 max-w-6xl mx-auto pb-20">
+    <div class="reveal in mb-8">
+      <p class="font-jp text-chakblue tracking-[0.3em] text-xs mb-3">構成員 — CURRENT MEMBERS</p>
+      <h2 class="font-display font-700 text-2xl sm:text-3xl">Clan Members</h2>
+    </div>
+    <div id="clanMembersGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <p id="clanMembersEmpty" class="hidden text-mist text-sm">No living members currently recorded in the archive.</p>
+  </section>
+
+  <!-- FAMILY TREE -->
+  <section class="px-5 sm:px-8 max-w-6xl mx-auto pb-24">
+    <div class="reveal in mb-8">
+      <p class="font-jp text-chakorange tracking-[0.3em] text-xs mb-3">家系図 — LINEAGE</p>
+      <h2 class="font-display font-700 text-2xl sm:text-3xl">Family Tree</h2>
+      <p class="text-mist mt-2 text-sm">From founding ancestors to the shinobi active in the archive today.</p>
+    </div>
+    <div id="familyTree" class="reveal in space-y-8"></div>
+  </section>
+
+</main>
+</div>
+<!-- end #view-clan -->
+
+<!-- FOOTER (shared) -->
+<footer class="relative z-10 border-t border-white/5 px-5 sm:px-8 py-10">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <a href="#home" class="js-enc-link font-display tracking-wide brand-glow font-700">忍 NINJA ENCYCLOPEDIA</a>
+    <div class="flex flex-col sm:items-end items-center gap-1">
+      <p class="text-mist text-xs">© 2026 Ninja Encyclopedia. Fan-made archive for shinobi lore.</p>
+      <a href="https://x.com/Naurtoshinobi" target="_blank" rel="noopener noreferrer" class="text-mist text-xs hover:text-chakblue transition-colors">
+        Built by <span class="text-chakorange font-display tracking-wide">@Naurtoshinobi</span><span class="sr-only"> (opens in a new tab)</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ============================================================
+  // SHARED: CDN health check + broken-image fallback
+  // ============================================================
+  if (!window.tailwind) {
+    document.getElementById('cdnWarning').classList.remove('hidden');
+  }
+
+  // Used as a src fallback whenever an external avatar/emblem image
+  // (dicebear.com) fails to load, e.g. no internet connection.
+  const FALLBACK_IMG = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">' +
+    '<rect width="100%" height="100%" fill="#11151d"/>' +
+    '<g stroke="#3ba7ff" stroke-width="6" fill="none" opacity="0.6">' +
+    '<circle cx="100" cy="100" r="70"/><path d="M65 100h70M100 65v70"/>' +
+    '</g></svg>'
+  );
+  function withImgFallback(src) {
+    return `src="${src}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'"`;
+  }
+  ['portraitImg', 'jutsuPortraitImg', 'clanPortraitImg'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.onerror = function () { this.onerror = null; this.src = FALLBACK_IMG; };
+  });
+
+  // ============================================================
+  // SHARED: mobile menu, scroll-reveal, chakra particle canvas
+  // ============================================================
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuBtnPath = document.getElementById('menuBtnPath');
+  const HAMBURGER_D = 'M4 7h16M4 12h16M4 17h16';
+  const CLOSE_D = 'm6 6 12 12M18 6 6 18';
+  function setMenuOpen(open) {
+    mobileMenu.classList.toggle('hidden', !open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menuBtnPath.setAttribute('d', open ? CLOSE_D : HAMBURGER_D);
+  }
+  menuBtn.addEventListener('click', () => {
+    setMenuOpen(mobileMenu.classList.contains('hidden'));
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => setMenuOpen(false));
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+
+  // Scrollspy: highlights the matching nav link (desktop + mobile) as each
+  // section scrolls into view, and marks it aria-current for screen readers.
+  const navSections = ['home', 'characters', 'jutsu', 'clans', 'villages', 'timeline', 'rankings']
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+  function setActiveNav(hash) {
+    document.querySelectorAll('.nav-link, .mobile-link').forEach(link => {
+      const match = link.getAttribute('href') === `#${hash}`;
+      link.classList.toggle('active', match);
+      if (match) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  const spyObserver = new IntersectionObserver((entries) => {
+    const visible = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (visible) setActiveNav(visible.target.id);
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
+  navSections.forEach(s => spyObserver.observe(s));
+
+  const canvas = document.getElementById('chakra-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function makeParticle() {
+    const isBlue = Math.random() > 0.45;
+    return {
+      x: Math.random() * canvas.width,
+      y: canvas.height + Math.random() * 100,
+      r: Math.random() * 2 + 0.6,
+      speed: Math.random() * 0.6 + 0.2,
+      drift: (Math.random() - 0.5) * 0.4,
+      color: isBlue ? '59,167,255' : '255,138,61',
+      alpha: Math.random() * 0.5 + 0.2
+    };
+  }
+
+  const count = Math.min(90, Math.floor((window.innerWidth * window.innerHeight) / 14000));
+  for (let i = 0; i < count; i++) particles.push(makeParticle());
+
+  function tick() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.y -= p.speed;
+      p.x += p.drift;
+      if (p.y < -10) Object.assign(p, makeParticle(), { y: canvas.height + 10 });
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = `rgba(${p.color},0.8)`;
+      ctx.fill();
+    });
+    if (!prefersReduced) requestAnimationFrame(tick);
+  }
+  if (!prefersReduced) requestAnimationFrame(tick);
+  else tick();
+
+  // Random shinobi button: picks a real character from the roster below
+  // and offers a direct link into their profile.
+  const randomBtn = document.getElementById('randomShinobi');
+  const randomResult = document.getElementById('randomResult');
+  randomBtn.addEventListener('click', () => {
+    const pick = characters[Math.floor(Math.random() * characters.length)];
+    randomResult.innerHTML = `⚡ <a href="?c=${encodeURIComponent(pick.seed)}" data-seed="${pick.seed}" class="js-char-link underline hover:text-chakblue transition-colors">${pick.name}, ${pick.rank}-Rank of ${pick.village}</a>`;
+  });
+
+  // ============================================================
+  // SHARED DATA
+  // ============================================================
+  const natureColors = {
+    Fire: '#ff8a3d', Water: '#3ba7ff', Earth: '#8a6d4b',
+    Lightning: '#f5e663', Wind: '#8ef0c8', None: '#8a94a3'
+  };
+  const rankColors = { S: '#ff8a3d', A: '#3ba7ff', B: '#9ad1ff', C: '#b7c0cc' };
+
+  const jutsuList = [
+    { name: 'Great Fireball Technique', type: 'Ninjutsu', rank: 'B', nature: 'Fire', seed: 'fireball', desc: 'Compresses chakra in the lungs to unleash a roaring sphere of flame at close to mid range.',
+      seals: ['Snake', 'Ram', 'Monkey', 'Boar', 'Horse', 'Tiger'], related: ['Twin Fang Fury', 'Chidori Streak'] },
+    { name: 'Water Prison Jutsu', type: 'Ninjutsu', rank: 'A', nature: 'Water', seed: 'waterprison', desc: 'Traps an opponent inside an orb of dense water that only the caster can safely dissolve.',
+      seals: ['Ox', 'Rabbit', 'Snake', 'Ram'], related: ['Mirage of a Thousand Doubts', 'Mud Wall Barrier'] },
+    { name: 'Mirage of a Thousand Doubts', type: 'Genjutsu', rank: 'A', nature: 'Water', seed: 'mirage', desc: 'Fractures the target’s sense of time, layering false memories over the present moment.',
+      seals: ['Rat', 'Tiger'], related: ['Static Bind Genjutsu', 'Whispering Leaf Illusion'] },
+    { name: 'Iron Fist Barrage', type: 'Taijutsu', rank: 'C', nature: 'Earth', seed: 'ironfist', desc: 'A close-quarters combo of reinforced strikes that shatter stone and armor alike.',
+      seals: [], related: ['Rising Dust Wall', 'Mud Wall Barrier'] },
+    { name: 'Rising Dust Wall', type: 'Ninjutsu', rank: 'C', nature: 'Earth', seed: 'dustwall', desc: 'Raises a thick curtain of earth and grit to block projectiles and obscure movement.',
+      seals: ['Ox', 'Dragon', 'Boar'], related: ['Mud Wall Barrier', 'Iron Fist Barrage'] },
+    { name: 'Chidori Streak', type: 'Ninjutsu', rank: 'S', nature: 'Lightning', seed: 'chidori', desc: 'Concentrates lightning-natured chakra into the hand, sharp enough to pierce solid rock.',
+      seals: ['Ox', 'Hare', 'Monkey'], related: ['Static Bind Genjutsu', 'Great Fireball Technique'] },
+    { name: 'Static Bind Genjutsu', type: 'Genjutsu', rank: 'B', nature: 'Lightning', seed: 'staticbind', desc: 'Sends a jolt of false sensation through the nerves, convincing the body it cannot move.',
+      seals: ['Rat', 'Bird', 'Snake'], related: ['Mirage of a Thousand Doubts', 'Chidori Streak'] },
+    { name: 'Gale Palm Strike', type: 'Taijutsu', rank: 'B', nature: 'Wind', seed: 'galepalm', desc: 'Channels wind chakra through an open palm to extend a strike’s range and cutting force.',
+      seals: [], related: ['Vacuum Blade Wave', 'Whispering Leaf Illusion'] },
+    { name: 'Vacuum Blade Wave', type: 'Ninjutsu', rank: 'A', nature: 'Wind', seed: 'vacuumblade', desc: 'Releases a crescent of compressed air capable of slicing through thick timber.',
+      seals: ['Dragon', 'Tiger', 'Rabbit', 'Dog'], related: ['Gale Palm Strike', 'Whispering Leaf Illusion'] },
+    { name: 'Forbidden: Reaper Seal', type: 'Fuinjutsu', rank: 'S', nature: 'None', seed: 'reaperseal', desc: 'A sealing technique that binds a soul at great cost to the user, reserved for dire last resorts.',
+      seals: ['Ram', 'Rat', 'Dog', 'Boar', 'Horse'], related: ['Binding Chain Seal', 'Shadow Clone Jutsu'] },
+    { name: 'Substitution Technique', type: 'Ninjutsu', rank: 'D', nature: 'None', seed: 'substitution', desc: 'Swaps the user’s body with a nearby object in an instant to dodge a fatal blow.',
+      seals: ['Tiger'], related: ['Shadow Clone Jutsu', 'Binding Chain Seal'] },
+    { name: 'Shadow Clone Jutsu', type: 'Ninjutsu', rank: 'B', nature: 'None', seed: 'shadowclone', desc: 'Creates a solid, thinking copy of the user that shares experience gained back on release.',
+      seals: ['Ram', 'Snake', 'Tiger'], related: ['Substitution Technique', 'Forbidden: Reaper Seal'] },
+    { name: 'Binding Chain Seal', type: 'Fuinjutsu', rank: 'A', nature: 'None', seed: 'bindingchain', desc: 'Chains of sealing script erupt from the ground to restrain a target’s chakra flow.',
+      seals: ['Dog', 'Boar', 'Ram'], related: ['Forbidden: Reaper Seal', 'Substitution Technique'] },
+    { name: 'Mud Wall Barrier', type: 'Ninjutsu', rank: 'C', nature: 'Earth', seed: 'mudwall', desc: 'Hardens a slab of wet earth into an instant defensive barrier against incoming attacks.',
+      seals: ['Ox', 'Ram', 'Boar'], related: ['Rising Dust Wall', 'Iron Fist Barrage'] },
+    { name: 'Whispering Leaf Illusion', type: 'Genjutsu', rank: 'C', nature: 'Wind', seed: 'whisperleaf', desc: 'Fills the target’s vision with drifting leaves that hide the caster’s real position.',
+      seals: ['Rabbit', 'Rat'], related: ['Mirage of a Thousand Doubts', 'Vacuum Blade Wave'] },
+    { name: 'Twin Fang Fury', type: 'Taijutsu', rank: 'A', nature: 'Fire', seed: 'twinfang', desc: 'A rapid two-strike combo empowered by heated chakra along the knuckles.',
+      seals: [], related: ['Great Fireball Technique', 'Iron Fist Barrage'] }
+  ];
+  const jutsuByName = Object.fromEntries(jutsuList.map(j => [j.name, j]));
+
+  const characters = [
+    { name: 'Kaito Hatsuragi', clan: 'Hatsuragi', village: 'Hidden Leaf', rank: 'S', nature: 'Fire', seed: 'Kaito',
+      bio: 'Heir to the Hatsuragi clan’s Solar Weave bloodline, Kaito earned his S-rank distinction during the Second Great Ninja War before his twentieth birthday. He is known across Hidden Leaf for closing a fight before his opponent finishes explaining their technique.',
+      jutsu: ['Great Fireball Technique', 'Twin Fang Fury', 'Shadow Clone Jutsu'],
+      stats: { ninjutsu: 92, taijutsu: 80, genjutsu: 55, speed: 84, strength: 78, intelligence: 81 } },
+    { name: 'Renka Uzuki', clan: 'Uzuki', village: 'Hidden Mist', rank: 'A', nature: 'Water', seed: 'Renka',
+      bio: 'Renka trained beneath the permanent fog of Hidden Mist, mastering the Uzuki clan’s Tidal Union style before she could reliably walk on water unaided. She now leads Mist’s coastal patrol division.',
+      jutsu: ['Water Prison Jutsu', 'Mirage of a Thousand Doubts', 'Substitution Technique'],
+      stats: { ninjutsu: 85, taijutsu: 62, genjutsu: 74, speed: 79, strength: 58, intelligence: 83 } },
+    { name: 'Shiro Kaen', clan: 'Kaen', village: 'Hidden Sand', rank: 'S', nature: 'Fire', seed: 'Shiro',
+      bio: 'Descended from the desert nomads who first tamed wildfire chakra, Shiro carries the Kaen clan’s Cinder Skin as easily as a second layer of armor. Sand’s council considers him the first choice for any mission requiring overwhelming force.',
+      jutsu: ['Great Fireball Technique', 'Twin Fang Fury', 'Forbidden: Reaper Seal'],
+      stats: { ninjutsu: 90, taijutsu: 86, genjutsu: 48, speed: 81, strength: 88, intelligence: 74 } },
+    { name: 'Mizuki Hyoga', clan: 'Hyoga', village: 'Hidden Mist', rank: 'A', nature: 'Water', seed: 'Mizuki',
+      bio: 'A quiet strategist from the Hyoga line of mountain hermits, Mizuki specializes in genjutsu so subtle that targets rarely notice they’ve been deceived until the mission is already lost.',
+      jutsu: ['Mirage of a Thousand Doubts', 'Water Prison Jutsu', 'Whispering Leaf Illusion'],
+      stats: { ninjutsu: 78, taijutsu: 55, genjutsu: 89, speed: 70, strength: 50, intelligence: 90 } },
+    { name: 'Tetsuo Kurogane', clan: 'Kurogane', village: 'Hidden Stone', rank: 'B', nature: 'Earth', seed: 'Tetsuo',
+      bio: 'Trained in the ore-veined tunnels beneath Hidden Stone, Tetsuo’s Iron Body technique has turned more than one ambush into an embarrassing footnote for the ambushers.',
+      jutsu: ['Iron Fist Barrage', 'Mud Wall Barrier', 'Rising Dust Wall'],
+      stats: { ninjutsu: 66, taijutsu: 79, genjutsu: 40, speed: 58, strength: 85, intelligence: 62 } },
+    { name: 'Aoi Rinjin', clan: 'Rinjin', village: 'Hidden Cloud', rank: 'A', nature: 'Lightning', seed: 'Aoi',
+      bio: 'Aoi reads storms the way most shinobi read scrolls, a Rinjin clan trait sharpened into one of Cloud’s fastest lightning-release arsenals.',
+      jutsu: ['Chidori Streak', 'Static Bind Genjutsu', 'Shadow Clone Jutsu'],
+      stats: { ninjutsu: 84, taijutsu: 72, genjutsu: 63, speed: 91, strength: 68, intelligence: 76 } },
+    { name: 'Kuro Yamikage', clan: 'Yamikage', village: 'Hidden Leaf', rank: 'S', nature: 'Wind', seed: 'Kuro',
+      bio: 'The Yamikage clan’s shadow operatives rarely appear in official records, but Kuro’s Umbral Step has become impossible for Leaf’s rivals to ignore.',
+      jutsu: ['Vacuum Blade Wave', 'Gale Palm Strike', 'Forbidden: Reaper Seal'],
+      stats: { ninjutsu: 88, taijutsu: 83, genjutsu: 70, speed: 93, strength: 74, intelligence: 85 } },
+    { name: 'Hana Suzumi', clan: 'Suzumi', village: 'Hidden Sand', rank: 'B', nature: 'Wind', seed: 'Hana',
+      bio: 'Hana grew up guiding caravans through sandstorms with her clan’s Whisper Gale techniques, skills that translate seamlessly into silent reconnaissance work.',
+      jutsu: ['Gale Palm Strike', 'Whispering Leaf Illusion', 'Substitution Technique'],
+      stats: { ninjutsu: 68, taijutsu: 71, genjutsu: 60, speed: 77, strength: 55, intelligence: 69 } },
+    { name: 'Ryota Enkai', clan: 'Enkai', village: 'Hidden Cloud', rank: 'C', nature: 'Lightning', seed: 'Ryota',
+      bio: 'The youngest active member of the Enkai merchant-turned-warrior line, Ryota is still building the reputation his clan expects of him.',
+      jutsu: ['Static Bind Genjutsu', 'Substitution Technique', 'Shadow Clone Jutsu'],
+      stats: { ninjutsu: 58, taijutsu: 52, genjutsu: 49, speed: 63, strength: 48, intelligence: 56 } },
+    { name: 'Sakura Ibuki', clan: 'Ibuki', village: 'Hidden Leaf', rank: 'B', nature: 'Earth', seed: 'Sakura',
+      bio: 'Sakura’s chakra-infused farming techniques double as some of Leaf’s most reliable defensive earthworks in the field.',
+      jutsu: ['Rising Dust Wall', 'Mud Wall Barrier', 'Iron Fist Barrage'],
+      stats: { ninjutsu: 72, taijutsu: 64, genjutsu: 51, speed: 60, strength: 70, intelligence: 67 } },
+    { name: 'Daichi Ganshou', clan: 'Ganshou', village: 'Hidden Stone', rank: 'A', nature: 'Earth', seed: 'Daichi',
+      bio: 'Quarry-born and mountain-forged, Daichi’s Bedrock Form has made him nearly impossible to move once he plants his feet.',
+      jutsu: ['Iron Fist Barrage', 'Mud Wall Barrier', 'Binding Chain Seal'],
+      stats: { ninjutsu: 80, taijutsu: 87, genjutsu: 44, speed: 61, strength: 90, intelligence: 71 } },
+    { name: 'Yuri Shirokawa', clan: 'Hatsuragi', village: 'Hidden Mist', rank: 'C', nature: 'Water', seed: 'Yuri',
+      bio: 'Though born into the Hatsuragi line, Yuri relocated to Hidden Mist to study under the Uzuki water-release masters, blending both clans’ techniques.',
+      jutsu: ['Water Prison Jutsu', 'Substitution Technique', 'Whispering Leaf Illusion'],
+      stats: { ninjutsu: 61, taijutsu: 48, genjutsu: 58, speed: 65, strength: 45, intelligence: 63 } },
+    { name: 'Naoki Raiden', clan: 'Rinjin', village: 'Hidden Cloud', rank: 'S', nature: 'Lightning', seed: 'Naoki',
+      bio: 'Naoki’s mastery of the Chidori Streak, refined through the Rinjin clan’s storm techniques, has made him Cloud’s most requested war-council advisor.',
+      jutsu: ['Chidori Streak', 'Static Bind Genjutsu', 'Binding Chain Seal'],
+      stats: { ninjutsu: 95, taijutsu: 78, genjutsu: 66, speed: 94, strength: 75, intelligence: 88 } },
+    { name: 'Emi Kazehana', clan: 'Kaen', village: 'Hidden Sand', rank: 'C', nature: 'Wind', seed: 'Emi',
+      bio: 'A newer face among Sand’s ranks, Emi is still finding her footing but has already impressed the council with her wind-release control.',
+      jutsu: ['Gale Palm Strike', 'Whispering Leaf Illusion', 'Substitution Technique'],
+      stats: { ninjutsu: 57, taijutsu: 54, genjutsu: 52, speed: 66, strength: 47, intelligence: 58 } },
+    { name: 'Ren Ashigaru', clan: 'Kurogane', village: 'Hidden Stone', rank: 'B', nature: 'Earth', seed: 'Ren',
+      bio: 'Ren trained alongside Tetsuo under the same Kurogane instructors, developing a taijutsu-heavy style built for grinding, prolonged engagements.',
+      jutsu: ['Iron Fist Barrage', 'Rising Dust Wall', 'Shadow Clone Jutsu'],
+      stats: { ninjutsu: 65, taijutsu: 82, genjutsu: 42, speed: 63, strength: 81, intelligence: 60 } },
+    { name: 'Yumeko Hikari', clan: 'Suzumi', village: 'Hidden Leaf', rank: 'A', nature: 'Fire', seed: 'Yumeko',
+      bio: 'Though born into the wind-calling Suzumi clan, Yumeko’s affinity turned toward fire early, making her one of the rare cross-nature talents recognized by Leaf’s council.',
+      jutsu: ['Twin Fang Fury', 'Great Fireball Technique', 'Binding Chain Seal'],
+      stats: { ninjutsu: 83, taijutsu: 76, genjutsu: 61, speed: 80, strength: 72, intelligence: 78 } }
+  ];
+  const charBySeed = Object.fromEntries(characters.map(c => [c.seed, c]));
+
+  const clans = [
+    { name: 'Hatsuragi Clan', village: 'Hidden Leaf', origin: 'Founded alongside the village itself, from a lineage of forest scouts.', kekkei: 'Solar Weave — chakra that hardens sunlight into cutting threads.', seed: 'hatsuragi',
+      history: 'The Hatsuragi trace their line to the forest scouts who first mapped the land later cleared for Hidden Leaf. When the Founding Era arrived, the clan traded its wandering patrols for a permanent seat on the village council, and its Solar Weave bloodline quickly became a symbol of Leaf’s military strength. Generations later the family still supplies more S-rank shinobi than any other Leaf clan, though its branch members are increasingly scattered across allied villages.',
+      elders: [
+        { gen: 'Founding Generation', members: [{ name: 'Hatsuragi the Elder', role: 'Founding Scout, first to bind sunlight into chakra' }] },
+        { gen: 'War Generation', members: [{ name: 'Souma Hatsuragi', role: 'S-rank veteran of the Second Great Ninja War' }] }
+      ] },
+    { name: 'Uzuki Clan', village: 'Hidden Mist', origin: 'Descended from island fishermen who bent the tides to defend their coast.', kekkei: 'Tidal Union — fuses water and physical strikes into a single technique.', seed: 'uzuki',
+      history: 'Long before Hidden Mist existed, the Uzuki were island fishermen who learned to bend the tides against raiders and storms alike. That practical, defensive instinct shaped the clan’s Tidal Union bloodline and later shaped the founding of Hidden Mist itself, where the Uzuki settled alongside the Hyoga to build the village’s coastal patrol traditions that continue today.',
+      elders: [
+        { gen: 'Founding Generation', members: [{ name: 'Uzuki the Tidecaller', role: 'First to fuse water chakra with physical strikes' }] },
+        { gen: 'Village Generation', members: [{ name: 'Ren Uzuki', role: 'Current Mizukage of Hidden Mist' }] }
+      ] },
+    { name: 'Kaen Clan', village: 'Hidden Sand', origin: 'Desert nomads who first tamed wildfire chakra to survive the dunes.', kekkei: 'Cinder Skin — grants temporary resistance to extreme heat.', seed: 'kaen',
+      history: 'The Kaen were desert nomads long before Hidden Sand rose from the dunes, surviving the region’s wildfires by learning to tame them rather than flee. Their Cinder Skin bloodline made them natural founders of Hidden Sand alongside the Suzumi, and the clan has held a central role in the village’s military leadership ever since, producing some of Sand’s most decorated field commanders.',
+      elders: [
+        { gen: 'Founding Generation', members: [{ name: 'Kaen the Unburnt', role: 'Survived the Dune Wildfires, first Cinder Skin bearer' }] },
+        { gen: 'Village Generation', members: [{ name: 'Emi Kaen', role: 'Current Kazekage of Hidden Sand' }] }
+      ] },
+    { name: 'Hyoga Clan', village: 'Hidden Mist', origin: 'Mountain hermits who settled near the mist village generations ago.', kekkei: 'Frost Genjutsu — illusions that numb the target’s senses.', seed: 'hyoga',
+      history: 'The Hyoga descend from mountain hermits who settled near Hidden Mist generations after its founding, drawn by the village’s permanent fog and its usefulness for concealment. Their Frost Genjutsu bloodline made them prized strategists, though the Mist Rebellion cost the clan entire branches of its genjutsu lineage — a loss the family has spent decades quietly rebuilding.',
+      elders: [
+        { gen: 'Settling Generation', members: [{ name: 'Hyoga the Hermit', role: 'First to numb the senses with frost-laced illusion' }] },
+        { gen: 'Post-Rebellion Generation', members: [{ name: 'Mizuki Hyoga', role: 'Rebuilding the clan’s genjutsu lineage' }] }
+      ] },
+    { name: 'Kurogane Clan', village: 'Hidden Stone', origin: 'Ancient smiths who mined chakra-rich ore beneath the stone village.', kekkei: 'Iron Body — hardens skin to a near-metallic density.', seed: 'kurogane',
+      history: 'Ancient smiths who mined chakra-rich ore beneath the mountain, the Kurogane fused their trade with their bodies long before Hidden Stone was founded. Their Iron Body bloodline became foundational to the village’s reputation for near-impenetrable defense, and Kurogane instructors still train the bulk of Stone’s taijutsu-focused shinobi.',
+      elders: [
+        { gen: 'Founding Generation', members: [{ name: 'Kurogane the Smith', role: 'First to harden flesh like forged iron' }] },
+        { gen: 'Instructor Generation', members: [{ name: 'Tetsuo Kurogane', role: 'Chief instructor of Stone’s Iron Body dojo' }] }
+      ] },
+    { name: 'Rinjin Clan', village: 'Hidden Cloud', origin: 'Sky-watchers who tracked storms long before settling under the cloud banner.', kekkei: 'Storm Current — channels lightning through water for area attacks.', seed: 'rinjin',
+      history: 'The Rinjin were sky-watchers who tracked storms across the high peaks long before Hidden Cloud existed, turning that meteorological knowledge into the Storm Current bloodline. Since the village’s founding, the clan has supplied its most requested war-council advisors, prized for reading a battlefield the way their ancestors once read the weather.',
+      elders: [
+        { gen: 'Founding Generation', members: [{ name: 'Rinjin the Stormwatcher', role: 'First to channel lightning through water' }] },
+        { gen: 'War-Council Generation', members: [{ name: 'Naoki Raiden', role: 'Cloud’s most requested war-council advisor' }] }
+      ] },
+    { name: 'Yamikage Clan', village: 'Hidden Leaf', origin: 'A secretive line of shadow operatives serving the village from its earliest wars.', kekkei: 'Umbral Step — allows brief travel through cast shadows.', seed: 'yamikage',
+      history: 'A secretive line of shadow operatives, the Yamikage have served Hidden Leaf’s intelligence and covert-ops divisions since the village’s earliest wars, rarely appearing in official records by design. Their Umbral Step bloodline lets initiated members travel briefly through cast shadows, a technique the clan guards more closely than any other Leaf bloodline.',
+      elders: [
+        { gen: 'Founding Generation', members: [{ name: 'Yamikage the Unseen', role: 'First shadow operative, origin of the Umbral Step' }] },
+        { gen: 'Current Generation', members: [{ name: 'Kuro Yamikage', role: 'Leaf’s most effective active shadow operative' }] }
+      ] },
+    { name: 'Suzumi Clan', village: 'Hidden Sand', origin: 'Wind-callers who guided caravans safely across the desert for centuries.', kekkei: 'Whisper Gale — carries silent techniques undetected across distance.', seed: 'suzumi',
+      history: 'Wind-callers who guided caravans safely across the desert for centuries, the Suzumi co-founded Hidden Sand alongside the Kaen, adapting their techniques to track underground aquifers when water became the village’s dominant early concern. Their Whisper Gale bloodline remains prized for silent, long-range reconnaissance work.',
+      elders: [
+        { gen: 'Founding Generation', members: [{ name: 'Suzumi the Wind-Caller', role: 'First to guide caravans with wind-release scouting' }] },
+        { gen: 'Current Generation', members: [{ name: 'Hana Suzumi', role: 'Leads Sand’s silent reconnaissance corps' }] }
+      ] },
+    { name: 'Enkai Clan', village: 'Hidden Cloud', origin: 'A merchant lineage that turned to lightning-based combat after a border war.', kekkei: 'Static Pulse — short bursts of paralytic lightning on contact.', seed: 'enkai',
+      history: 'Originally a merchant lineage moving goods along Cloud’s mountain routes, the Enkai turned to lightning-based combat after a border war left their caravans undefended. The resulting Static Pulse bloodline is younger than most of Cloud’s founding techniques, and the clan is still building the battlefield reputation its founders never sought.',
+      elders: [
+        { gen: 'Founding Generation', members: [{ name: 'Enkai the Merchant-Warrior', role: 'First to weaponize the caravan-guard bloodline' }] },
+        { gen: 'Current Generation', members: [{ name: 'Ryota Enkai', role: 'Youngest active clan member, still building his reputation' }] }
+      ] },
+    { name: 'Ibuki Clan', village: 'Hidden Leaf', origin: 'Farmers-turned-shinobi known for cultivating chakra-infused soil.', kekkei: 'Root Bind — earth techniques that restrain rather than destroy.', seed: 'ibuki',
+      history: 'Farmers-turned-shinobi, the Ibuki joined Hidden Leaf generations after its founding, bringing chakra-infused farming techniques that became the Root Bind bloodline — earth-release methods built to restrain rather than destroy. The clan’s defensive earthworks remain some of the most reliable in Leaf’s field-fortification units.',
+      elders: [
+        { gen: 'Founding Generation', members: [{ name: 'Ibuki the Cultivator', role: 'First to infuse farmland soil with restraining chakra' }] },
+        { gen: 'Current Generation', members: [{ name: 'Aeko Ibuki', role: 'Current Hokage of Hidden Leaf' }] }
+      ] },
+    { name: 'Ganshou Clan', village: 'Hidden Stone', origin: 'Quarry workers whose chakra fused with the mountain rock they mined.', kekkei: 'Bedrock Form — temporarily fuses the body with stone terrain.', seed: 'ganshou',
+      history: 'Quarry workers whose chakra gradually fused with the mountain rock they mined, the Ganshou co-founded Hidden Stone alongside the Kurogane. Their Bedrock Form bloodline turns terrain itself into an ally, and clan members are famously difficult to dislodge once they plant their feet on stone ground.',
+      elders: [
+        { gen: 'Founding Generation', members: [{ name: 'Ganshou the Quarryman', role: 'First to fuse body and bedrock' }] },
+        { gen: 'Current Generation', members: [{ name: 'Daichi Ganshou', role: 'Current Tsuchikage of Hidden Stone' }] }
+      ] }
+  ];
+
+  const clanBySeed = Object.fromEntries(clans.map(c => [c.seed, c]));
+  const jutsuBySeed = Object.fromEntries(jutsuList.map(j => [j.seed, j]));
+  function clanShortName(c) { return c.name.replace(/\s*Clan$/, ''); }
+  function clanMembers(c) { return characters.filter(ch => ch.clan === clanShortName(c)); }
+  function jutsuUsers(j) { return characters.filter(ch => ch.jutsu.includes(j.name)); }
+
+  const villages = [
+    { name: 'Hidden Leaf Village', country: 'Land of Fire', kage: 'Hokage Aeko Ibuki', seed: 'hiddenleaf',
+      desc: 'A forest capital built beneath towering pines, known for balancing military strength with a strong civilian heart.' },
+    { name: 'Hidden Mist Village', country: 'Land of Water', kage: 'Mizukage Ren Uzuki', seed: 'hiddenmist',
+      desc: 'A coastal village wrapped in perpetual fog, historically feared for its brutal graduation trials, now rebuilding its reputation.' },
+    { name: 'Hidden Sand Village', country: 'Land of Wind', kage: 'Kazekage Emi Kaen', seed: 'hiddensand',
+      desc: 'Carved into desert cliffs, this village trades in scarce resources and raises shinobi hardened by the dunes.' },
+    { name: 'Hidden Stone Village', country: 'Land of Earth', kage: 'Tsuchikage Daichi Ganshou', seed: 'hiddenstone',
+      desc: 'Built into a mountain range rich with chakra ore, famed for its unmatched earth-style fortifications.' },
+    { name: 'Hidden Cloud Village', country: 'Land of Lightning', kage: 'Raikage Naoki Rinjin', seed: 'hiddencloud',
+      desc: 'Perched among high peaks and storm fronts, its shinobi are trained for speed and overwhelming lightning force.' },
+    { name: 'Hidden Rain Village', country: 'Land of Rain', kage: 'Amekage Yui Sorano', seed: 'hiddenrain',
+      desc: 'A rebuilt industrial village under near-constant rainfall, forged by decades of war into a cautious, self-reliant power.' }
+  ];
+
+  const ERA_STYLE = {
+    'Age of Clans':      { color: '#8a94a3', glyph: '氏' },
+    'Founding Era':      { color: '#3ba7ff', glyph: '創' },
+    'Warring Era':       { color: '#ff5e1a', glyph: '戦' },
+    'Unification Era':   { color: '#34d1c4', glyph: '結' },
+    'Modern Era':         { color: '#ff8a3d', glyph: '今' }
+  };
+
+  const timelineEvents = [
+    { year: 'Pre-SE 210', title: 'The First Chakra Awakening', era: 'Age of Clans',
+      desc: 'A wandering sage learns to draw chakra from breath and blood, teaching the technique to the scattered clans who shelter her.',
+      detail: 'No village existed yet — only clans moving between hunting grounds. The sage\'s teaching spreads by word of mouth over three generations, becoming the root technique every later jutsu is built from.' },
+    { year: 'Pre-SE 85', title: 'Rise of the Bloodline Techniques', era: 'Age of Clans',
+      desc: 'Distinct kekkei genkai emerge across rival clans, including the earliest forms of the Hatsuragi Solar Weave and Uzuki Tidal Union.',
+      detail: 'Bloodline limits become both a source of pride and a target for raiding. Clans begin guarding technique secrets within family lines, a practice that still shapes clan culture generations later.' },
+    { year: 'Pre-SE 12', title: 'The Five Clans Accord', era: 'Age of Clans',
+      desc: 'Exhausted by decades of raids, the Hatsuragi, Uzuki, Kaen, Kurogane, and Rinjin clans meet at neutral ground and agree to stop the bloodshed.',
+      detail: 'The accord has no enforcement power and nearly collapses twice in its first year. Its lasting achievement is smaller than it sounds: an agreed calendar, the one later dating systems are built from.' },
+    { year: 'SE 0', title: 'Founding of Hidden Leaf', era: 'Founding Era',
+      desc: 'The Hatsuragi and Yamikage clans break ground on the first hidden village, built into the forest they once fought over.',
+      detail: 'Hidden Leaf becomes the model every later village copies: a walled settlement built around a central council hall, with clan compounds arranged by founding seniority.' },
+    { year: 'SE 4', title: 'Founding of Hidden Sand', era: 'Founding Era',
+      desc: 'Kaen and Suzumi clans settle the desert, trading their nomadic caravans for a fortified village carved into the dunes.',
+      detail: 'Water rights dominate the village\'s early politics more than any war. The Suzumi wind-calling techniques are adapted specifically to track underground aquifers.' },
+    { year: 'SE 9', title: 'Founding of Hidden Mist', era: 'Founding Era',
+      desc: 'Uzuki and Hyoga clans establish a coastal village shrouded in engineered fog, using chakra to conceal it from rival scouts.',
+      detail: 'The permanent mist is initially a defensive measure. Over time it becomes central to the village\'s identity and its reputation for secrecy.' },
+    { year: 'SE 14', title: 'Founding of Hidden Stone', era: 'Founding Era',
+      desc: 'Kurogane and Ganshou clans carve their village directly into a mountain, favoring stone halls over wooden buildings.',
+      detail: 'Hidden Stone is the only village built almost entirely underground in its first decades, a choice that later gives its shinobi an advantage in tunnel warfare.' },
+    { year: 'SE 19', title: 'Founding of Hidden Cloud', era: 'Founding Era',
+      desc: 'Rinjin and Enkai clans build among the high peaks, positioning the village to read storms before they strike the lowlands.',
+      detail: 'Its remote location makes Hidden Cloud the hardest village to invade — and, later, the slowest to receive news from the other four.' },
+    { year: 'SE 47', title: 'The First Great Ninja War', era: 'Warring Era',
+      desc: 'A dispute over a border river between Hidden Leaf and Hidden Stone escalates into the first war fought between full villages.',
+      detail: 'The war lasts six years and ends in a stalemate treaty that satisfies no one. It hardens the rivalry between Leaf and Stone for two more generations.' },
+    { year: 'SE 63', title: 'The Mist Rebellion', era: 'Warring Era',
+      desc: 'A faction within Hidden Mist rejects the ruling council, plunging the village into an internal uprising that reshapes its leadership.',
+      detail: 'The rebellion is remembered less for who won and more for what was lost: entire branches of the Hyoga clan\'s genjutsu lineage vanish from the record during the purge that follows.' },
+    { year: 'SE 81', title: 'The Second Great Ninja War', era: 'Warring Era',
+      desc: 'Shifting alliances draw all five villages into a single sprawling conflict over dwindling chakra-rich territory.',
+      detail: 'This is the war that produces the era\'s most famous names — Kaito Hatsuragi\'s and Renka Uzuki\'s ancestors both earn S-rank distinction on opposing sides before the truce.' },
+    { year: 'SE 88', title: 'The Unification Accord', era: 'Unification Era',
+      desc: 'Exhausted village leaders sign a formal non-aggression pact and establish a joint council to mediate future disputes.',
+      detail: 'The accord\'s signing site — a neutral clearing between Leaf and Sand territory — is preserved and still marked on maps today as neutral ground.' },
+    { year: 'SE 95', title: 'The Chunin Exchange Tournament Begins', era: 'Unification Era',
+      desc: 'A joint tournament is created so rising shinobi from all five villages can test their skill without reigniting old wars.',
+      detail: 'What starts as a controlled diplomatic exercise becomes the most-watched event in the shinobi calendar, still run every three years.' },
+    { year: 'SE 118', title: 'Present Day', era: 'Modern Era',
+      desc: 'A new generation of S-rank shinobi rises across all five villages, their stories still being written into the record as events unfold.',
+      detail: 'This encyclopedia exists because of the SE 95 information-sharing clauses in the Unification Accord — a fragile peace that still holds, one archived entry at a time.' }
+  ];
+
+  function populateFilter(select, values) {
+    [...new Set(values)].sort().forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v;
+      opt.textContent = v;
+      select.appendChild(opt);
+    });
+  }
+
+  // Reusable jutsu card (used by both the Jutsu encyclopedia grid and the profile's Signature Techniques grid)
+  function jutsuCardHTML(j) {
+    if (!j) return '';
+    const icon = `https://api.dicebear.com/7.x/shapes/svg?seed=${encodeURIComponent(j.seed)}&backgroundColor=0b0e14,11151d`;
+    const natureColor = natureColors[j.nature] || '#8a94a3';
+    return `
+      <a href="?j=${encodeURIComponent(j.seed)}" data-seed="${j.seed}" class="js-jutsu-link jutsu-card rounded-2xl overflow-hidden flex flex-col">
+        <div class="icon-wrap aspect-[16/9] bg-surface2">
+          <img ${withImgFallback(icon)} alt="Emblem for ${j.name}" loading="lazy" class="w-full h-full object-cover">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-start justify-between gap-2">
+            <h3 class="font-display font-700 text-lg leading-tight">${j.name}</h3>
+            <span class="rank-badge rank-${j.rank} border text-xs px-2 py-0.5 rounded-full shrink-0">${j.rank}-Rank</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 mt-3">
+            <span class="type-badge text-xs px-2.5 py-1 rounded-full text-bone/80">${j.type}</span>
+            <span class="flex items-center gap-1.5 text-xs font-display tracking-wide" style="color:${natureColor}">
+              <span class="w-2 h-2 rounded-full" style="background:${natureColor}; box-shadow:0 0 6px ${natureColor}"></span>
+              ${j.nature === 'None' ? 'No Nature' : j.nature + ' Release'}
+            </span>
+          </div>
+          <p class="text-mist text-sm mt-3 leading-relaxed flex-1">${j.desc}</p>
+          <span class="inline-block mt-4 text-chakblue text-xs font-display tracking-wide">View jutsu details →</span>
+        </div>
+      </a>`;
+  }
+
+  // ============================================================
+  // ENCYCLOPEDIA VIEW: characters grid
+  // ============================================================
+  const grid = document.getElementById('charGrid');
+  const emptyState = document.getElementById('emptyState');
+  const resultCount = document.getElementById('resultCount');
+  const searchInput = document.getElementById('charSearch');
+  const villageFilter = document.getElementById('villageFilter');
+  const clanFilter = document.getElementById('clanFilter');
+  const rankFilter = document.getElementById('rankFilter');
+  const clearBtn = document.getElementById('clearFilters');
+
+  populateFilter(villageFilter, characters.map(c => c.village));
+  populateFilter(clanFilter, characters.map(c => c.clan));
+  populateFilter(rankFilter, characters.map(c => c.rank).sort());
+
+  function cardHTML(c) {
+    const avatar = `https://api.dicebear.com/7.x/adventurer/svg?seed=${encodeURIComponent(c.seed)}&backgroundColor=0b0e14,11151d`;
+    const natureColor = natureColors[c.nature] || '#8a94a3';
+    return `
+      <a href="?c=${encodeURIComponent(c.seed)}" data-seed="${c.seed}" class="js-char-link char-card rounded-2xl overflow-hidden block">
+        <div class="avatar-wrap aspect-square bg-surface2">
+          <img ${withImgFallback(avatar)} alt="${c.name}, shinobi of ${c.village}" loading="lazy" class="w-full h-full object-cover">
+        </div>
+        <div class="p-5">
+          <div class="flex items-start justify-between gap-2">
+            <h3 class="font-display font-700 text-lg leading-tight">${c.name}</h3>
+            <span class="rank-badge rank-${c.rank} border text-xs px-2 py-0.5 rounded-full shrink-0">${c.rank}-Rank</span>
+          </div>
+          <p class="text-mist text-xs mt-2">${c.clan} Clan · ${c.village}</p>
+          <div class="flex items-center gap-2 mt-3">
+            <span class="w-2.5 h-2.5 rounded-full" style="background:${natureColor}; box-shadow:0 0 8px ${natureColor}"></span>
+            <span class="text-xs font-display tracking-wide" style="color:${natureColor}">${c.nature} Release</span>
+          </div>
+          <span class="inline-block mt-4 text-chakblue text-xs font-display tracking-wide">View full profile →</span>
+        </div>
+      </a>`;
+  }
+
+  function renderCharacters() {
+    const q = searchInput.value.trim().toLowerCase();
+    const v = villageFilter.value;
+    const cl = clanFilter.value;
+    const r = rankFilter.value;
+
+    const filtered = characters.filter(c =>
+      c.name.toLowerCase().includes(q) &&
+      (!v || c.village === v) &&
+      (!cl || c.clan === cl) &&
+      (!r || c.rank === r)
+    );
+
+    grid.innerHTML = filtered.map(cardHTML).join('');
+    resultCount.textContent = `${filtered.length} shinobi found`;
+    emptyState.classList.toggle('hidden', filtered.length !== 0);
+    grid.classList.toggle('hidden', filtered.length === 0);
+  }
+
+  [searchInput, villageFilter, clanFilter, rankFilter].forEach(el => {
+    el.addEventListener('input', renderCharacters);
+    el.addEventListener('change', renderCharacters);
+  });
+
+  clearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    villageFilter.value = '';
+    clanFilter.value = '';
+    rankFilter.value = '';
+    renderCharacters();
+  });
+
+  renderCharacters();
+
+  // ============================================================
+  // ENCYCLOPEDIA VIEW: jutsu grid
+  // ============================================================
+  const jutsuGrid = document.getElementById('jutsuGrid');
+  const jutsuEmptyState = document.getElementById('jutsuEmptyState');
+  const jutsuResultCount = document.getElementById('jutsuResultCount');
+  const jutsuSearch = document.getElementById('jutsuSearch');
+  const typeFilter = document.getElementById('typeFilter');
+  const jutsuRankFilter = document.getElementById('jutsuRankFilter');
+  const natureFilter = document.getElementById('natureFilter');
+  const clearJutsuBtn = document.getElementById('clearJutsuFilters');
+
+  populateFilter(typeFilter, jutsuList.map(j => j.type));
+  populateFilter(jutsuRankFilter, jutsuList.map(j => j.rank).sort());
+  populateFilter(natureFilter, jutsuList.map(j => j.nature));
+
+  function renderJutsu() {
+    const q = jutsuSearch.value.trim().toLowerCase();
+    const t = typeFilter.value;
+    const r = jutsuRankFilter.value;
+    const n = natureFilter.value;
+
+    const filtered = jutsuList.filter(j =>
+      j.name.toLowerCase().includes(q) &&
+      (!t || j.type === t) &&
+      (!r || j.rank === r) &&
+      (!n || j.nature === n)
+    );
+
+    jutsuGrid.innerHTML = filtered.map(jutsuCardHTML).join('');
+    jutsuResultCount.textContent = `${filtered.length} jutsu found`;
+    jutsuEmptyState.classList.toggle('hidden', filtered.length !== 0);
+    jutsuGrid.classList.toggle('hidden', filtered.length === 0);
+  }
+
+  [jutsuSearch, typeFilter, jutsuRankFilter, natureFilter].forEach(el => {
+    el.addEventListener('input', renderJutsu);
+    el.addEventListener('change', renderJutsu);
+  });
+
+  clearJutsuBtn.addEventListener('click', () => {
+    jutsuSearch.value = '';
+    typeFilter.value = '';
+    jutsuRankFilter.value = '';
+    natureFilter.value = '';
+    renderJutsu();
+  });
+
+  renderJutsu();
+
+  // ============================================================
+  // ENCYCLOPEDIA VIEW: clans grid
+  // ============================================================
+  const clanGrid = document.getElementById('clanGrid');
+  const clanEmptyState = document.getElementById('clanEmptyState');
+  const clanResultCount = document.getElementById('clanResultCount');
+  const clanSearch = document.getElementById('clanSearch');
+  const clanVillageFilter = document.getElementById('clanVillageFilter');
+  const clearClanBtn = document.getElementById('clearClanFilters');
+
+  populateFilter(clanVillageFilter, clans.map(c => c.village));
+
+  function clanCardHTML(c) {
+    const logo = `https://api.dicebear.com/7.x/identicon/svg?seed=${encodeURIComponent(c.seed)}&backgroundColor=0b0e14,11151d`;
+    return `
+      <a href="?cl=${encodeURIComponent(c.seed)}" data-seed="${c.seed}" class="js-clan-link clan-card rounded-2xl p-6 flex flex-col">
+        <div class="flex items-center gap-4">
+          <div class="logo-ring w-16 h-16 rounded-full overflow-hidden shrink-0 bg-surface2">
+            <img ${withImgFallback(logo)} alt="${c.name} emblem" loading="lazy" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <h3 class="font-display font-700 text-xl leading-tight">${c.name}</h3>
+            <p class="text-mist text-xs mt-1">${c.village}</p>
+          </div>
+        </div>
+        <p class="text-mist text-sm mt-4 leading-relaxed">${c.origin}</p>
+        <div class="mt-4 pt-4 border-t border-white/8">
+          <p class="font-jp text-chakorange text-[11px] tracking-widest mb-1">血継限界 — KEKKEI GENKAI</p>
+          <p class="text-bone/90 text-sm leading-relaxed">${c.kekkei}</p>
+        </div>
+        <span class="inline-block mt-4 text-chakblue text-xs font-display tracking-wide">Explore clan →</span>
+      </a>`;
+  }
+
+  function renderClans() {
+    const q = clanSearch.value.trim().toLowerCase();
+    const v = clanVillageFilter.value;
+
+    const filtered = clans.filter(c =>
+      c.name.toLowerCase().includes(q) &&
+      (!v || c.village === v)
+    );
+
+    clanGrid.innerHTML = filtered.map(clanCardHTML).join('');
+    clanResultCount.textContent = `${filtered.length} clans found`;
+    clanEmptyState.classList.toggle('hidden', filtered.length !== 0);
+    clanGrid.classList.toggle('hidden', filtered.length === 0);
+  }
+
+  [clanSearch, clanVillageFilter].forEach(el => {
+    el.addEventListener('input', renderClans);
+    el.addEventListener('change', renderClans);
+  });
+
+  clearClanBtn.addEventListener('click', () => {
+    clanSearch.value = '';
+    clanVillageFilter.value = '';
+    renderClans();
+  });
+
+  renderClans();
+
+  // ============================================================
+  // ENCYCLOPEDIA VIEW: villages grid
+  // ============================================================
+  const villageGrid = document.getElementById('villageGrid');
+  const villageEmptyState = document.getElementById('villageEmptyState');
+  const villageResultCount = document.getElementById('villageResultCount');
+  const villageSearch = document.getElementById('villageSearch');
+  const countryFilter = document.getElementById('countryFilter');
+  const clearVillageBtn = document.getElementById('clearVillageFilters');
+
+  populateFilter(countryFilter, villages.map(v => v.country));
+
+  function villageCardHTML(v) {
+    const banner = `https://api.dicebear.com/7.x/rings/svg?seed=${encodeURIComponent(v.seed)}&backgroundColor=1e6fd9,ff5e1a,0b0e14`;
+    return `
+      <article class="village-card rounded-2xl overflow-hidden flex flex-col">
+        <div class="banner-wrap aspect-[16/9] bg-surface2">
+          <img ${withImgFallback(banner)} alt="Emblem of ${v.name}" loading="lazy" class="w-full h-full object-cover">
+          <div class="banner-fade"></div>
+          <span class="absolute bottom-3 left-4 font-display font-700 text-lg text-bone drop-shadow">${v.name}</span>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <p class="text-mist text-xs">${v.country}</p>
+          <span class="kage-badge inline-block mt-3 text-xs px-3 py-1 rounded-full text-chakorange w-fit">${v.kage}</span>
+          <p class="text-mist text-sm mt-3 leading-relaxed flex-1">${v.desc}</p>
+        </div>
+      </article>`;
+  }
+
+  function renderVillages() {
+    const q = villageSearch.value.trim().toLowerCase();
+    const c = countryFilter.value;
+
+    const filtered = villages.filter(v =>
+      v.name.toLowerCase().includes(q) &&
+      (!c || v.country === c)
+    );
+
+    villageGrid.innerHTML = filtered.map(villageCardHTML).join('');
+    villageResultCount.textContent = `${filtered.length} villages found`;
+    villageEmptyState.classList.toggle('hidden', filtered.length !== 0);
+    villageGrid.classList.toggle('hidden', filtered.length === 0);
+  }
+
+  [villageSearch, countryFilter].forEach(el => {
+    el.addEventListener('input', renderVillages);
+    el.addEventListener('change', renderVillages);
+  });
+
+  clearVillageBtn.addEventListener('click', () => {
+    villageSearch.value = '';
+    countryFilter.value = '';
+    renderVillages();
+  });
+
+  renderVillages();
+
+  // ============================================================
+  // ENCYCLOPEDIA VIEW: timeline
+  // ============================================================
+  const timelineTrack = document.getElementById('timelineTrack');
+  const timelineEmptyState = document.getElementById('timelineEmptyState');
+  const timelineResultCount = document.getElementById('timelineResultCount');
+  const timelineSearch = document.getElementById('timelineSearch');
+  const clearTimelineBtn = document.getElementById('clearTimelineFilters');
+  const eraPillsWrap = document.getElementById('eraPills');
+  const timelineFill = document.getElementById('timelineFill');
+  const timelineRail = document.getElementById('timelineRail');
+
+  let activeTimelineEra = '';
+
+  const timelineEras = [...new Set(timelineEvents.map(e => e.era))];
+  eraPillsWrap.innerHTML = ['All Eras', ...timelineEras].map(era => {
+    const isAll = era === 'All Eras';
+    const color = isAll ? '#e8edf2' : ERA_STYLE[era].color;
+    return `<button type="button" class="era-pill text-xs font-display tracking-wide px-4 py-2 rounded-full ${isAll ? 'active' : ''}"
+      data-era="${isAll ? '' : era}" style="--pill:${color}">${era}</button>`;
+  }).join('');
+
+  eraPillsWrap.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('.era-pill');
+    if (!btn) return;
+    activeTimelineEra = btn.dataset.era;
+    eraPillsWrap.querySelectorAll('.era-pill').forEach(p => p.classList.toggle('active', p === btn));
+    renderTimeline();
+  });
+
+  function timelineItemHTML(e, index) {
+    const style = ERA_STYLE[e.era];
+    const id = `timeline-detail-${index}`;
+    return `
+      <div class="relative pl-14 md:pl-0 md:grid md:grid-cols-2 md:gap-x-12 mb-14 reveal">
+        <span class="timeline-dot" style="--dot:${style.color}"></span>
+        <div class="${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:text-right'}">
+          <div class="timeline-card rounded-2xl overflow-hidden max-w-md ${index % 2 === 0 ? '' : 'md:ml-auto'}">
+            <div class="thumb-wrap aspect-[16/9] flex items-center justify-center" style="background:linear-gradient(135deg, ${style.color}22, #0b0e14 70%);">
+              <span class="thumb-glyph font-jp" style="color:${style.color}">${style.glyph}</span>
+            </div>
+            <div class="p-5 ${index % 2 === 0 ? 'text-left' : 'text-left md:text-right'}">
+              <div class="flex items-center gap-3 flex-wrap ${index % 2 === 0 ? '' : 'md:justify-end'}">
+                <span class="font-display font-700 text-sm tracking-wide" style="color:${style.color}">${e.year}</span>
+                <span class="era-chip text-xs px-2.5 py-0.5 rounded-full text-bone/85">${e.era}</span>
+              </div>
+              <h3 class="font-display font-700 text-lg mt-2">${e.title}</h3>
+              <p class="text-mist text-sm mt-2 leading-relaxed">${e.desc}</p>
+
+              <button type="button" class="expand-btn mt-3 inline-flex items-center gap-1.5 text-xs font-display tracking-wide" style="color:${style.color}" data-target="${id}" aria-expanded="false">
+                More lore
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+
+              <div id="${id}" class="detail-wrap">
+                <div class="detail-inner">
+                  <p class="text-mist text-sm mt-3 leading-relaxed border-t border-white/5 pt-3">${e.detail}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function renderTimeline() {
+    const q = timelineSearch.value.trim().toLowerCase();
+
+    const filtered = timelineEvents.filter(e =>
+      (e.title.toLowerCase().includes(q) || e.era.toLowerCase().includes(q) || e.desc.toLowerCase().includes(q)) &&
+      (!activeTimelineEra || e.era === activeTimelineEra)
+    );
+
+    if (filtered.length === 0) {
+      timelineTrack.innerHTML = '';
+    } else {
+      timelineTrack.innerHTML = filtered.map((e, i) => timelineItemHTML(e, i)).join('');
+      timelineTrack.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    }
+
+    timelineResultCount.textContent = `${filtered.length} event${filtered.length === 1 ? '' : 's'} found`;
+    timelineEmptyState.classList.toggle('hidden', filtered.length !== 0);
+    timelineRail.classList.toggle('hidden', filtered.length === 0);
+  }
+
+  timelineTrack.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('.expand-btn');
+    if (!btn) return;
+    const target = document.getElementById(btn.dataset.target);
+    const isOpen = target.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen));
+    btn.firstChild.textContent = isOpen ? 'Less lore ' : 'More lore ';
+  });
+
+  timelineSearch.addEventListener('input', renderTimeline);
+  clearTimelineBtn.addEventListener('click', () => {
+    timelineSearch.value = '';
+    activeTimelineEra = '';
+    eraPillsWrap.querySelectorAll('.era-pill').forEach((p, i) => p.classList.toggle('active', i === 0));
+    renderTimeline();
+  });
+
+  renderTimeline();
+
+  function updateTimelineFill() {
+    const rect = timelineRail.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const total = rect.height;
+    if (total <= 0) return;
+    const progressed = Math.min(Math.max(vh * 0.6 - rect.top, 0), total);
+    const pct = (progressed / total) * 100;
+    timelineFill.style.height = pct + '%';
+  }
+  window.addEventListener('scroll', updateTimelineFill, { passive: true });
+  window.addEventListener('resize', updateTimelineFill);
+  updateTimelineFill();
+
+  // ============================================================
+  // CHARACTER VIEW: profile rendering
+  // ============================================================
+  const avatarURL = seed => `https://api.dicebear.com/7.x/adventurer/svg?seed=${encodeURIComponent(seed)}&backgroundColor=0b0e14,11151d`;
+
+  const charSwitcher = document.getElementById('charSwitcher');
+  charSwitcher.innerHTML = characters.map(c => `<option value="${c.seed}">${c.name} — ${c.village}</option>`).join('');
+  charSwitcher.addEventListener('change', e => showCharacter(e.target.value));
+
+  function relatedCardHTML(c) {
+    const avatar = avatarURL(c.seed);
+    const natureColor = natureColors[c.nature] || '#8a94a3';
+    return `
+      <a href="?c=${encodeURIComponent(c.seed)}" data-seed="${c.seed}" class="js-char-link char-card rounded-2xl overflow-hidden block">
+        <div class="avatar-wrap aspect-square bg-surface2">
+          <img ${withImgFallback(avatar)} alt="${c.name}, shinobi of ${c.village}" loading="lazy" class="w-full h-full object-cover">
+        </div>
+        <div class="p-5">
+          <div class="flex items-start justify-between gap-2">
+            <h3 class="font-display font-700 text-lg leading-tight">${c.name}</h3>
+            <span class="rank-badge rank-${c.rank} border text-xs px-2 py-0.5 rounded-full shrink-0">${c.rank}-Rank</span>
+          </div>
+          <p class="text-mist text-xs mt-2">${c.clan} Clan · ${c.village}</p>
+          <div class="flex items-center gap-2 mt-3">
+            <span class="w-2.5 h-2.5 rounded-full" style="background:${natureColor}; box-shadow:0 0 8px ${natureColor}"></span>
+            <span class="text-xs font-display tracking-wide" style="color:${natureColor}">${c.nature} Release</span>
+          </div>
+        </div>
+      </a>`;
+  }
+
+  function getRelated(current) {
+    const others = characters.filter(c => c.seed !== current.seed);
+    const sameClan = others.filter(c => c.clan === current.clan);
+    const sameVillage = others.filter(c => c.village === current.village && c.clan !== current.clan);
+    const sameRank = others.filter(c => c.rank === current.rank && c.village !== current.village && c.clan !== current.clan);
+    const combined = [...sameClan, ...sameVillage, ...sameRank, ...others];
+    const seen = new Set();
+    const result = [];
+    for (const c of combined) {
+      if (!seen.has(c.seed)) { seen.add(c.seed); result.push(c); }
+      if (result.length === 3) break;
+    }
+    return result;
+  }
+
+  const statLabels = {
+    ninjutsu: 'Ninjutsu', taijutsu: 'Taijutsu', genjutsu: 'Genjutsu',
+    speed: 'Speed', strength: 'Strength', intelligence: 'Intelligence'
+  };
+  const statColors = {
+    ninjutsu: ['#3ba7ff', '#1e6fd9'], taijutsu: ['#ff5e1a', '#ff8a3d'], genjutsu: ['#8ef0c8', '#34d1c4'],
+    speed: ['#f5e663', '#ff8a3d'], strength: ['#ff8a3d', '#ff5e1a'], intelligence: ['#3ba7ff', '#8ef0c8']
+  };
+
+  function renderCharacterView(c) {
+    document.title = `${c.name} — Ninja Encyclopedia`;
+    charSwitcher.value = c.seed;
+
+    const rankColor = rankColors[c.rank] || '#3ba7ff';
+    const natureColor = natureColors[c.nature] || '#8a94a3';
+
+    document.getElementById('portraitFrame').style.setProperty('--rank', rankColor);
+    document.getElementById('portraitImg').src = avatarURL(c.seed);
+    document.getElementById('portraitImg').alt = `${c.name}, shinobi of ${c.village}`;
+
+    document.getElementById('rankBadge').textContent = `${c.rank}-Rank Shinobi`;
+    document.getElementById('rankBadge').className = `rank-badge rank-${c.rank} border text-sm px-3 py-1 rounded-full font-700`;
+
+    const natureBadge = document.getElementById('natureBadge');
+    natureBadge.style.color = natureColor;
+    natureBadge.innerHTML = `<span class="w-2.5 h-2.5 rounded-full inline-block" style="background:${natureColor}; box-shadow:0 0 8px ${natureColor}"></span> ${c.nature} Release`;
+
+    document.getElementById('charName').textContent = c.name;
+    document.getElementById('charSub').textContent = `${c.clan} Clan · ${c.village} · ${c.rank}-Rank`;
+    document.getElementById('charBio').textContent = c.bio;
+
+    document.getElementById('factClan').textContent = c.clan;
+    document.getElementById('factVillage').textContent = c.village;
+    document.getElementById('factRank').textContent = `${c.rank}-Rank`;
+    document.getElementById('factNature').textContent = `${c.nature} Release`;
+
+    const statList = document.getElementById('statList');
+    statList.innerHTML = Object.entries(c.stats).map(([key, val]) => `
+      <div class="stat-row">
+        <div class="flex items-baseline justify-between mb-2">
+          <span class="font-display tracking-wide text-sm text-bone/85">${statLabels[key]}</span>
+          <span class="font-display font-700 text-sm" style="color:${statColors[key][0]}">${val}</span>
+        </div>
+        <div class="stat-track">
+          <div class="stat-fill" data-value="${val}" style="--stat-color-a:${statColors[key][0]}; --stat-color-b:${statColors[key][1]}"></div>
+        </div>
+      </div>`).join('');
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        statList.querySelectorAll('.stat-fill').forEach(el => {
+          el.style.width = el.dataset.value + '%';
+        });
+      });
+    });
+
+    document.getElementById('profileJutsuGrid').innerHTML = c.jutsu.map(name => jutsuCardHTML(jutsuByName[name])).join('');
+    document.getElementById('relatedGrid').innerHTML = getRelated(c).map(relatedCardHTML).join('');
+
+    document.querySelectorAll('#view-character .reveal:not(.in)').forEach(el => el.classList.add('in'));
+  }
+
+  // ============================================================
+  // JUTSU DETAIL VIEW: rendering
+  // ============================================================
+  const jutsuSwitcher = document.getElementById('jutsuSwitcher');
+  jutsuSwitcher.innerHTML = jutsuList.map(j => `<option value="${j.seed}">${j.name}</option>`).join('');
+  jutsuSwitcher.addEventListener('change', e => showJutsu(e.target.value));
+
+  const SEAL_GLYPH = {
+    Rat: '子', Ox: '丑', Tiger: '寅', Rabbit: '卯', Hare: '卯', Dragon: '辰',
+    Snake: '巳', Horse: '午', Ram: '未', Monkey: '申', Bird: '酉', Dog: '戌', Boar: '亥'
+  };
+
+  function handSealsHTML(seals) {
+    if (!seals || seals.length === 0) {
+      return `<p class="text-mist text-sm">No hand seals required — this technique relies on raw chakra control or physical mastery alone.</p>`;
+    }
+    return seals.map((s, i) => `
+      <span class="flex items-center gap-3">
+        <span class="seal-chip flex items-center gap-2 text-sm px-4 py-2 rounded-full">
+          <span class="font-jp text-base">${SEAL_GLYPH[s] || '印'}</span> ${s}
+        </span>
+        ${i < seals.length - 1 ? '<span class="seal-arrow text-lg">→</span>' : ''}
+      </span>`).join('');
+  }
+
+  function renderJutsuView(j) {
+    document.title = `${j.name} — Ninja Encyclopedia`;
+    jutsuSwitcher.value = j.seed;
+
+    const rankColor = rankColors[j.rank] || '#3ba7ff';
+    const natureColor = natureColors[j.nature] || '#8a94a3';
+    const icon = `https://api.dicebear.com/7.x/shapes/svg?seed=${encodeURIComponent(j.seed)}&backgroundColor=0b0e14,11151d`;
+
+    document.getElementById('jutsuPortraitFrame').style.setProperty('--rank', rankColor);
+    document.getElementById('jutsuPortraitImg').src = icon;
+    document.getElementById('jutsuPortraitImg').alt = `Emblem for ${j.name}`;
+
+    const rankBadge = document.getElementById('jutsuRankBadge');
+    rankBadge.textContent = `${j.rank}-Rank`;
+    rankBadge.className = `rank-badge rank-${j.rank} border text-sm px-3 py-1 rounded-full font-700`;
+
+    document.getElementById('jutsuTypeBadge').textContent = j.type;
+
+    const natureBadge = document.getElementById('jutsuNatureBadge');
+    natureBadge.style.color = natureColor;
+    natureBadge.innerHTML = `<span class="w-2.5 h-2.5 rounded-full inline-block" style="background:${natureColor}; box-shadow:0 0 8px ${natureColor}"></span> ${j.nature === 'None' ? 'No Nature' : j.nature + ' Release'}`;
+
+    document.getElementById('jutsuName').textContent = j.name;
+    document.getElementById('jutsuDesc').textContent = j.desc;
+
+    document.getElementById('factType').textContent = j.type;
+    document.getElementById('factJutsuRank').textContent = `${j.rank}-Rank`;
+    document.getElementById('factJutsuNature').textContent = j.nature === 'None' ? 'No Nature' : `${j.nature} Release`;
+
+    const users = jutsuUsers(j);
+    document.getElementById('factUserCount').textContent = `${users.length} shinobi`;
+
+    document.getElementById('handSealRow').innerHTML = handSealsHTML(j.seals);
+
+    const usersGrid = document.getElementById('jutsuUsersGrid');
+    const usersEmpty = document.getElementById('jutsuUsersEmpty');
+    usersGrid.innerHTML = users.map(relatedCardHTML).join('');
+    usersGrid.classList.toggle('hidden', users.length === 0);
+    usersEmpty.classList.toggle('hidden', users.length !== 0);
+
+    const related = (j.related || []).map(name => jutsuByName[name]).filter(Boolean);
+    document.getElementById('relatedJutsuGrid').innerHTML = related.map(jutsuCardHTML).join('');
+
+    document.querySelectorAll('#view-jutsu .reveal:not(.in)').forEach(el => el.classList.add('in'));
+  }
+
+  // ============================================================
+  // CLAN DETAIL VIEW: rendering
+  // ============================================================
+  const clanSwitcher = document.getElementById('clanSwitcher');
+  clanSwitcher.innerHTML = clans.map(c => `<option value="${c.seed}">${c.name}</option>`).join('');
+  clanSwitcher.addEventListener('change', e => showClan(e.target.value));
+
+  function memberNodeHTML(name, role, seed) {
+    if (seed && charBySeed[seed]) {
+      return `<a href="?c=${encodeURIComponent(seed)}" data-seed="${seed}" class="js-char-link tree-node is-link inline-block rounded-xl px-4 py-3">
+        <p class="font-display font-700 text-sm">${name}</p>
+        <p class="text-mist text-xs mt-1">${role}</p>
+      </a>`;
+    }
+    return `<div class="tree-node inline-block rounded-xl px-4 py-3">
+        <p class="font-display font-700 text-sm">${name}</p>
+        <p class="text-mist text-xs mt-1">${role}</p>
+      </div>`;
+  }
+
+  function familyTreeHTML(c) {
+    const gens = (c.elders || []).map(g => `
+      <div class="tree-gen">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-3">${g.gen}</p>
+        <div class="flex flex-wrap gap-3">
+          ${g.members.map(m => memberNodeHTML(m.name, m.role)).join('')}
+        </div>
+      </div>`).join('');
+
+    const members = clanMembers(c);
+    const currentGen = members.length ? `
+      <div class="tree-gen">
+        <p class="font-jp text-chakorange text-[11px] tracking-widest mb-3">Active Roster</p>
+        <div class="flex flex-wrap gap-3">
+          ${members.map(m => memberNodeHTML(m.name, `${m.rank}-Rank · ${m.village}`, m.seed)).join('')}
+        </div>
+      </div>` : '';
+
+    return gens + currentGen;
+  }
+
+  function renderClanView(c) {
+    document.title = `${c.name} — Ninja Encyclopedia`;
+    clanSwitcher.value = c.seed;
+
+    const logo = `https://api.dicebear.com/7.x/identicon/svg?seed=${encodeURIComponent(c.seed)}&backgroundColor=0b0e14,11151d`;
+    document.getElementById('clanPortraitImg').src = logo;
+    document.getElementById('clanPortraitImg').alt = `${c.name} emblem`;
+
+    document.getElementById('clanVillageBadge').textContent = c.village;
+    document.getElementById('clanName').textContent = c.name;
+    document.getElementById('clanSub').textContent = c.origin;
+
+    document.getElementById('factClanVillage').textContent = c.village;
+    const members = clanMembers(c);
+    document.getElementById('factMemberCount').textContent = `${members.length} recorded`;
+    document.getElementById('factKekkei').textContent = (c.kekkei || '').split(' — ')[0];
+
+    document.getElementById('clanHistory').textContent = c.history || c.origin;
+    document.getElementById('clanKekkeiFull').textContent = c.kekkei;
+
+    const membersGrid = document.getElementById('clanMembersGrid');
+    const membersEmpty = document.getElementById('clanMembersEmpty');
+    membersGrid.innerHTML = members.map(relatedCardHTML).join('');
+    membersGrid.classList.toggle('hidden', members.length === 0);
+    membersEmpty.classList.toggle('hidden', members.length !== 0);
+
+    document.getElementById('familyTree').innerHTML = familyTreeHTML(c);
+
+    document.querySelectorAll('#view-clan .reveal:not(.in)').forEach(el => el.classList.add('in'));
+  }
+
+  // ============================================================
+  // ROUTER: toggles between the encyclopedia view and the
+  // character profile view, all inside this single file.
+  // ============================================================
+  const viewEncyclopedia = document.getElementById('view-encyclopedia');
+  const viewCharacter = document.getElementById('view-character');
+  const viewJutsu = document.getElementById('view-jutsu');
+  const viewClan = document.getElementById('view-clan');
+  const DEFAULT_TITLE = 'Ninja Encyclopedia — The Ultimate Shinobi Knowledge Hub';
+
+  function showView(name) {
+    viewEncyclopedia.classList.toggle('hidden', name !== 'encyclopedia');
+    viewCharacter.classList.toggle('hidden', name !== 'character');
+    viewJutsu.classList.toggle('hidden', name !== 'jutsu');
+    viewClan.classList.toggle('hidden', name !== 'clan');
+  }
+
+  function showCharacter(seed) {
+    const c = charBySeed[seed] || characters[0];
+    const url = new URL(window.location.href);
+    url.search = '';
+    url.searchParams.set('c', c.seed);
+    url.hash = '';
+    window.history.pushState({}, '', url);
+    renderCharacterView(c);
+    showView('character');
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  }
+
+  function showJutsu(seed) {
+    const j = jutsuBySeed[seed] || jutsuList[0];
+    const url = new URL(window.location.href);
+    url.search = '';
+    url.searchParams.set('j', j.seed);
+    url.hash = '';
+    window.history.pushState({}, '', url);
+    renderJutsuView(j);
+    showView('jutsu');
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  }
+
+  function showClan(seed) {
+    const c = clanBySeed[seed] || clans[0];
+    const url = new URL(window.location.href);
+    url.search = '';
+    url.searchParams.set('cl', c.seed);
+    url.hash = '';
+    window.history.pushState({}, '', url);
+    renderClanView(c);
+    showView('clan');
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  }
+
+  function showEncyclopedia(hash) {
+    const url = new URL(window.location.href);
+    url.search = '';
+    url.hash = hash ? hash.replace(/^#/, '') : '';
+    window.history.pushState({}, '', url);
+    document.title = DEFAULT_TITLE;
+    showView('encyclopedia');
+    if (hash) {
+      requestAnimationFrame(() => {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
+      });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+  }
+
+  document.addEventListener('click', (ev) => {
+    const charLink = ev.target.closest('a.js-char-link');
+    if (charLink) {
+      ev.preventDefault();
+      showCharacter(charLink.dataset.seed);
+      return;
+    }
+    const jutsuLink = ev.target.closest('a.js-jutsu-link');
+    if (jutsuLink) {
+      ev.preventDefault();
+      showJutsu(jutsuLink.dataset.seed);
+      return;
+    }
+    const clanLink = ev.target.closest('a.js-clan-link');
+    if (clanLink) {
+      ev.preventDefault();
+      showClan(clanLink.dataset.seed);
+      return;
+    }
+    const encLink = ev.target.closest('a.js-enc-link');
+    if (encLink) {
+      ev.preventDefault();
+      showEncyclopedia(encLink.getAttribute('href'));
+    }
+  });
+
+  function route() {
+    const params = new URLSearchParams(window.location.search);
+    const charSeed = params.get('c');
+    const jutsuSeed = params.get('j');
+    const clanSeed = params.get('cl');
+    if (charSeed && charBySeed[charSeed]) {
+      renderCharacterView(charBySeed[charSeed]);
+      showView('character');
+    } else if (jutsuSeed && jutsuBySeed[jutsuSeed]) {
+      renderJutsuView(jutsuBySeed[jutsuSeed]);
+      showView('jutsu');
+    } else if (clanSeed && clanBySeed[clanSeed]) {
+      renderClanView(clanBySeed[clanSeed]);
+      showView('clan');
+    } else {
+      document.title = DEFAULT_TITLE;
+      showView('encyclopedia');
+      if (window.location.hash) {
+        const el = document.querySelector(window.location.hash);
+        if (el) el.scrollIntoView({ behavior: 'auto' });
+      }
+    }
+  }
+  window.addEventListener('popstate', route);
+  route();
+</script>
+</body>
+</html>
