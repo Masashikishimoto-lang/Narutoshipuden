@@ -1,0 +1,13 @@
+{
+  "name": "Naruboru Fan Stories — NARUTO · BORUTO News",
+  "short_name": "Naruboru News",
+  "description": "NARUTO and BORUTO news from around the world, in short original summaries with a link to the source.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF8",
+  "theme_color": "#FF7601",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
